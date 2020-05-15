@@ -1,5 +1,5 @@
 * {
-  /* border: 1px solid gold; */
+  border: 1px solid gold;
 }
 
 .container {
@@ -7,13 +7,14 @@
 }
 
 .search-bar {
-  margin: 15px 30px;
+  margin: 15px 0px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 form {
@@ -21,8 +22,8 @@ form {
 }
 
 input {
-  height: 100%;
-  width: 100%;
+  width: 100px;
+  padding: 1em 2em;
 }
 
 .main-content {
@@ -51,4 +52,9 @@ input {
 
 .see-more {
   margin: 10px;
+}
+
+#submit {
+  padding: 1em 2em;
+  border-radius: .5em;
 }
