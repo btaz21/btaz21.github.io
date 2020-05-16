@@ -104,6 +104,12 @@ input {
   margin: 0 auto;
 }
 
+.info h5 {
+  font-size: 2vw;
+  color: #e2884a;
+  margin: 25px auto;
+}
+
 .see-more {
   margin: 10px;
   text-align: center;

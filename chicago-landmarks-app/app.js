@@ -52,26 +52,30 @@ $(() => {
         eraGenerator(userInput)
         const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
         const $h3 = $('<h3>').text('HISTORICAL LANDMARKS BUILT IN ' + userInput).appendTo($div)
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].date_built === userInput) {
-            const $h4 = $('<h4>')
-            $h4.text(data[i].landmark_name).attr('id', i).addClass('landmark-list')
-            $('.landmarks').append($h4)
-          }
-          else {
-            // console.log('hi');
+        if (userInput > 1800 && userInput < 2020) {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].date_built === userInput) {
+              const $h4 = $('<h4>')
+              $h4.text(data[i].landmark_name).attr('id', i).addClass('landmark-list')
+              $('.landmarks').append($h4)
+            }
           }
         }
+        else if (userInput > 2020) {
+          console.log('future');
+            // console.log('hi');
+        }
+        else if (user )
         $('.landmark-list').on('click', (event) => {
           $('.info').remove()
           const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
           const $firsth3 = $('<h3>').text('DESCRIPTION OF THE LANDMARK').appendTo('.info')
           const landmarkListItem = $(event.currentTarget).attr('id')
-          const $h3 = $('<h3>').text(data[landmarkListItem].landmark_name).addClass('info-items')
+          const $h5 = $('<h5>').text(data[landmarkListItem].landmark_name).addClass('info-items')
           const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
           const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
           const $seeMoreLink = $('<h4>').text('See more').attr('id', 'seemore').addClass('info-items')
-          $('.info').append($h3)
+          $('.info').append($h5)
           $('.info').append($h4)
           $('.info').append($anotherh4)
           $('.info').append($seeMoreLink)
