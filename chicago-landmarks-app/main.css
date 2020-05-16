@@ -20,6 +20,22 @@ body {
   flex-wrap: wrap;
 }
 
+.about-container {
+  display: flex;
+  margin: 50px;
+}
+
+.about-container img {
+  display: none;
+}
+
+.about {
+  margin: 100px;
+  text-align: center;
+}
+
+
+
 h3 {
   font-size: 2.5vw;
   margin: 5px;
@@ -232,6 +248,11 @@ iframe {
     flex-basis: 60%;
   }
 
-
+  .about-container img {
+    display: block;
+    width: 25%;
+    filter: grayscale(100%);
+    border-radius: 25%;
+  }
 
 }
