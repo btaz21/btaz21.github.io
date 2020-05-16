@@ -17,18 +17,24 @@
   flex-wrap: wrap;
 }
 
+h3 {
+  font-size: 2.75vw;
+  margin: 0;
+}
 
 h1 {
-  font-size: 27px;
+  font-size: 26px;
+  padding-top: 5px;
 }
 
 form {
-  margin: 20px 0px;
+  margin: 20px 15px;
 }
 
 input {
   width: 100px;
-  padding: 1em 2em;
+  padding: 1em;
+  font-size: 14px;
 }
 
 .main-content {
@@ -40,10 +46,16 @@ input {
 }
 
 .landmarks {
-  margin: 10px 50px;
+  /* visibility: hidden; */
+  margin: 10px;
   text-align: center;
   border: 1px solid #DBD7D7;
   border-radius: 10px;
+  padding: 15px 0px;
+  position: relative;
+  animation-name: shifter;
+  animation-duration: .5s;
+  animation-timing-function: ease-in-out;
 }
 
 .landmark-list {
@@ -51,10 +63,15 @@ input {
 }
 
 .periods {
-  margin: 10px 50px;
+  margin: 10px;
   text-align: center;
   border: 1px solid #DBD7D7;
   border-radius: 10px;
+  padding: 15px 0px;
+  position: relative;
+  animation-name: shifter;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
 }
 
 .styles {
@@ -66,10 +83,11 @@ input {
 }
 
 .info {
-  margin: 10px 50px;
+  margin: 10px;
   text-align: center;
   border: 1px solid #DBD7D7;
   border-radius: 10px;
+  padding: 15px 0px;
 }
 
 .info h4 {
@@ -77,15 +95,22 @@ input {
 }
 
 .see-more {
-  margin: 10px 50px;
+  margin: 10px;
   text-align: center;
   border: 1px solid #DBD7D7;
   border-radius: 10px;
+  padding: 15px 0px;
 }
 
 #submit {
-  padding: 1em 2em;
+  padding: 1.4em 2.3em;
   border-radius: .5em;
+  height: 100%;
+  /* margin: 0 auto; */
+}
+
+#submit:hover {
+  background-color: #DBD7D7;
 }
 
 #main-image {
@@ -99,4 +124,9 @@ input {
 
 iframe {
   visibility: hidden;
+}
+
+@keyframes shifter {
+  0% {left: 0px; top: 900px;}
+  100% {left: 0px; top: 0px;}
 }
