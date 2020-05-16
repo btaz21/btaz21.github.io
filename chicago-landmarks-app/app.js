@@ -51,13 +51,23 @@ $(() => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].date_built === userInput) {
             const $paragraph = $('<p>')
-            $paragraph.text(data[i].landmark_name)
+            $paragraph.text(data[i].landmark_name).attr('id', i).addClass('landmark-list')
             $('.landmarks').append($paragraph)
           }
           else {
             // console.log('hi');
           }
         }
+        $('.landmark-list').on('click', (event) => {
+          const landmarkListItem = $(event.currentTarget).attr('id')
+          console.log(landmarkListItem);
+          const $h3 = $('<h3>').text(data[landmarkListItem].landmark_name)
+          const $h4 = $('<h4>').text(data[landmarkListItem].address)
+          const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect)
+          $('.info').append($h3)
+          $('.info').append($h4)
+          $('.info').append($anotherh4)
+        })
       },
       (error) => {
         console.log(error);
