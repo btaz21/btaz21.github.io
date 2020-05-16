@@ -3,6 +3,11 @@ $(() => {
     //start here
 
     let currentYear = 2020
+    let currentImgIndex = 0
+
+
+
+
 
     eraGenerator = (userInput) => {
       const $div = $('<div>').addClass('periods').appendTo('.left-sidebar')
@@ -55,9 +60,42 @@ $(() => {
         if (userInput > currentYear) {
           console.log('nope');
           $('body').empty()
-          const $div = $('<div>').attr('id', 'future').appendTo('body')
-          const $h2 = $('<h2>').text('We haven\'t made it to ' + userInput + ' yet. But here\'s what it might look like:').appendTo('#future')
-          const $img =
+          const $div = $('<div>').addClass('future').appendTo('body')
+          const $h2 = $('<h2>').text('We haven\'t made it to ' + userInput + ' yet. But here\'s what it might look like:').appendTo('.future')
+          const $anotherdiv = $('<div>').addClass('future-image-container').appendTo($div)
+          const $img = $('<img>').attr('src', 'images/future1.jpg').addClass('future-images').appendTo('.future-image-container')
+          const $img2 = $('<img>').attr('src', 'images/future2.jpg').addClass('future-images').appendTo('.future-image-container')
+          const $img3 = $('<img>').attr('src', 'images/future3.jpg').addClass('future-images').appendTo('.future-image-container')
+          const $numOfFutureImages = $('.future-image-container').children().length - 1
+          console.log($numOfFutureImages);
+          const $nextButton = $('<button>').attr('id', 'next-button').addClass('carouselButton')
+          const $previousButton = $('<button>').attr('id', 'previous-button').addClass('carouselButton')
+          $nextButton.appendTo('.future')
+          $previousButton.appendTo('.future')
+          console.log($numOfFutureImages);
+
+          $('#next-button').on('click', () => {
+            $('.future-image-container').children().eq(currentImgIndex).css('display', 'none')
+            if (currentImgIndex < $numOfFutureImages) {
+              currentImgIndex ++
+            }
+            else {
+              currentImgIndex = 0
+            }
+            $('.future-image-container').children().eq(currentImgIndex).css('display', 'block')
+          })
+
+
+          $('#previous-button').on('click', () => {
+            $('.future-image-container').children().eq(currentImgIndex).css('display', 'none')
+            if (currentImgIndex > 0) {
+              currentImgIndex --
+            }
+            else {
+              currentImgIndex = $numOfFutureImages
+            }
+            $('.future-image-container').children().eq(currentImgIndex).css('display', 'block')
+          })
           //button that says yikes! let me return to the present
 
         }
