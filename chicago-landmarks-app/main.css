@@ -228,6 +228,7 @@ iframe {
 
   #main-image {
     display: block;
+    box-shadow: 7px 7px 30px #e2884a;
   }
 
   #main-mobile {
