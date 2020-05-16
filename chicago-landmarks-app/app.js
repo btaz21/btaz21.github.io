@@ -54,16 +54,18 @@ $(() => {
         const $h3 = $('<h3>').text('HISTORICAL LANDMARKS BUILT IN ' + userInput).appendTo($div)
         for (let i = 0; i < data.length; i++) {
           if (data[i].date_built === userInput) {
-            const $paragraph = $('<p>')
-            $paragraph.text(data[i].landmark_name).attr('id', i).addClass('landmark-list')
-            $('.landmarks').append($paragraph)
+            const $h4 = $('<h4>')
+            $h4.text(data[i].landmark_name).attr('id', i).addClass('landmark-list')
+            $('.landmarks').append($h4)
           }
           else {
             // console.log('hi');
           }
         }
         $('.landmark-list').on('click', (event) => {
-          $('.info-items').remove()
+          $('.info').remove()
+          const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
+          const $firsth3 = $('<h3>').text('DESCRIPTION OF THE LANDMARK').appendTo('.info')
           const landmarkListItem = $(event.currentTarget).attr('id')
           const $h3 = $('<h3>').text(data[landmarkListItem].landmark_name).addClass('info-items')
           const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
@@ -74,7 +76,11 @@ $(() => {
           $('.info').append($anotherh4)
           $('.info').append($seeMoreLink)
           $('#seemore').on('click', (event) => {
-            $('iframe').css('visibility', 'visible')
+            const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
+            const $h3 = $('<h3>').text('EXTRA INFO ABOUT THE LANDMARK').appendTo('.see-more')
+            const $iframe = $('<iframe>').attr('id', 'wiki-iframe').attr('width', '100%').attr('height', '400').attr('src', 'https://en.wikipedia.org/wiki/Emil_Bach_House')
+            $iframe.appendTo('.see-more')
+            $('#wiki-iframe').css('visibility', 'visible')
           })
         })
       },

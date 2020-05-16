@@ -18,9 +18,13 @@
 }
 
 h3 {
-  font-size: 2.75vw;
+  font-size: 2.5vw;
   margin: 5px;
   color: #04417a;
+}
+
+h4 {
+  color: #575656;
 }
 
 h1 {
@@ -117,6 +121,7 @@ input {
 
 #submit:hover {
   background-color: #DBD7D7;
+  cursor: pointer;
 }
 
 #main-image {
