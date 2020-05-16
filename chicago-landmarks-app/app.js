@@ -13,31 +13,31 @@ $(() => {
       const $div = $('<div>').addClass('periods').appendTo('.left-sidebar')
       const $h3 = $('<h3>').text('CONTEMPORANEOUS ARCHITECTURAL STYLES').appendTo($div)
       const $h4 = $('<h4>').addClass('styles')
-      $h4.text('Year: ' + userInput)
+      $h4.text(userInput).attr('id', 'year')
       $('.periods').append($h4)
       if (userInput >= 1800 && userInput <= 1829) {
         const architectureEra = $('<h4>').addClass('styles')
-        architectureEra.text('Queen Anne, Gothic Revival, Second Empire')
+        architectureEra.text('Early Republic Period, Federal Style, Classical Revival, Roman Classical Revival, Greek Revival')
         $('.periods').append(architectureEra)
       }
       else if (userInput >= 1830 && userInput <= 1860) {
         const architectureEra = $('<h4>').addClass('styles')
-        architectureEra.text('Greek Revival, Gothic Revival, Italianate, Exotic Revival, Egyptian Revival, Moorish Revival, Swiss Chalet, Octagon Mode')
+        architectureEra.text('Greek Revival, Gothic Revival')
         $('.periods').append(architectureEra)
       }
       else if (userInput >= 1861 && userInput <= 1890) {
         const architectureEra = $('<h4>').addClass('styles')
-        architectureEra.text('International, Post-Modern Eclectic')
+        architectureEra.text('Italianate Villa/Italianate, Octagon Style, Late Victorian, Romanesque Revival, Second Empire/Mansard Style, High Victorian Gothic, Chateauesque Style, Stick Style, Queen Anne, Shingle Style, Colonial Revival')
         $('.periods').append(architectureEra)
       }
       else if (userInput >= 1891 && userInput <= 1920) {
         const architectureEra = $('<h4>').addClass('styles')
-        architectureEra.text('International, Post-Modern Eclectic')
+        architectureEra.text('Sullivanesque, Commercial Style, Bungalow/Craftsman, Prairie School, Colonial Revival, Tudor Revival, Collegiate Gothic, Italian Renaissance Revival, Classical Revival, Beaux Arts')
         $('.periods').append(architectureEra)
       }
-      else if (userInput >= 1891 && userInput <= 1920) {
+      else if (userInput >= 1920 && userInput <= currentYear) {
         const architectureEra = $('<h4>').addClass('styles')
-        architectureEra.text('International, Post-Modern Eclectic')
+        architectureEra.text('Spanish Colonial Revival, Art Deco, Moderne, International')
         $('.periods').append(architectureEra)
       }
     }
@@ -48,7 +48,8 @@ $(() => {
       event.preventDefault()
       $('.landmarks').remove()
       $('.periods').remove()
-      $('.info-items').remove()
+      $('.info').remove()
+      $('.see-more').remove()
       const userInput = $('input[type="text"]').val()
 
     $.ajax(

@@ -30,6 +30,7 @@ h4 {
   color: #575656;
 }
 
+
 h1 {
   font-size: 26px;
   padding-top: 5px;
@@ -108,7 +109,7 @@ input {
 }
 
 .info h5 {
-  font-size: 2vw;
+  font-size: 3vw;
   color: #e2884a;
   margin: 25px auto;
 }
@@ -182,6 +183,14 @@ input {
   display: block;
 }
 
+#year {
+  border: 1px solid #DBD7D7;
+  border-radius: 45%;
+  margin: 15px 43%;
+  padding: 5px;
+
+}
+
 /* .future h2 {
 
 } */
@@ -197,6 +206,10 @@ iframe {
 
 @media (min-width: 600px) {
 
+  * {
+    /* border: 1px solid gold; */
+  }
+
   #main-image {
     display: block;
   }
@@ -204,6 +217,21 @@ iframe {
   #main-mobile {
     display: none;
   }
+
+  .left-sidebar {
+    display: flex;
+    /* margin: 20px 40px; */
+    /* width: 90%; */
+  }
+
+  .landmarks {
+    flex-basis: 40%;
+  }
+
+  .periods {
+    flex-basis: 60%;
+  }
+
 
 
 }
