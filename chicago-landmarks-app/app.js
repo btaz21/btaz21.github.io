@@ -1,6 +1,9 @@
 $(() => {
 
     //start here
+
+    let currentYear = 2020
+
     eraGenerator = (userInput) => {
       const $div = $('<div>').addClass('periods').appendTo('.left-sidebar')
       const $h3 = $('<h3>').text('CONTEMPORANEOUS ARCHITECTURAL STYLES').appendTo($div)
@@ -49,10 +52,22 @@ $(() => {
       }
     ).then(
       (data) => {
-        eraGenerator(userInput)
-        const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
-        const $h3 = $('<h3>').text('HISTORICAL LANDMARKS BUILT IN ' + userInput).appendTo($div)
-        if (userInput > 1800 && userInput < 2020) {
+        if (userInput > currentYear) {
+          console.log('nope');
+          $('body').empty()
+          const $div = $('<div>').attr('id', 'future').appendTo('body')
+          const $h2 = $('<h2>').text('We haven\'t made it to ' + userInput + ' yet. But here\'s what it might look like:').appendTo('#future')
+          const $img =
+          //button that says yikes! let me return to the present
+
+        }
+        else if (userInput < 1800) {
+          console.log('also no');
+        }
+        else {
+          eraGenerator(userInput)
+          const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
+          const $h3 = $('<h3>').text('HISTORICAL LANDMARKS BUILT IN ' + userInput).appendTo($div)
           for (let i = 0; i < data.length; i++) {
             if (data[i].date_built === userInput) {
               const $h4 = $('<h4>')
@@ -60,33 +75,28 @@ $(() => {
               $('.landmarks').append($h4)
             }
           }
-        }
-        else if (userInput > 2020) {
-          console.log('future');
-            // console.log('hi');
-        }
-        else if (user )
-        $('.landmark-list').on('click', (event) => {
-          $('.info').remove()
-          const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
-          const $firsth3 = $('<h3>').text('DESCRIPTION OF THE LANDMARK').appendTo('.info')
-          const landmarkListItem = $(event.currentTarget).attr('id')
-          const $h5 = $('<h5>').text(data[landmarkListItem].landmark_name).addClass('info-items')
-          const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
-          const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
-          const $seeMoreLink = $('<h4>').text('See more').attr('id', 'seemore').addClass('info-items')
-          $('.info').append($h5)
-          $('.info').append($h4)
-          $('.info').append($anotherh4)
-          $('.info').append($seeMoreLink)
-          $('#seemore').on('click', (event) => {
-            const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
-            const $h3 = $('<h3>').text('EXTRA INFO ABOUT THE LANDMARK').appendTo('.see-more')
-            const $iframe = $('<iframe>').attr('id', 'wiki-iframe').attr('width', '100%').attr('height', '400').attr('src', 'https://en.wikipedia.org/wiki/Emil_Bach_House')
-            $iframe.appendTo('.see-more')
-            $('#wiki-iframe').css('visibility', 'visible')
+          $('.landmark-list').on('click', (event) => {
+            $('.info').remove()
+            const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
+            const $firsth3 = $('<h3>').text('DESCRIPTION OF THE LANDMARK').appendTo('.info')
+            const landmarkListItem = $(event.currentTarget).attr('id')
+            const $h5 = $('<h5>').text(data[landmarkListItem].landmark_name).addClass('info-items')
+            const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
+            const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
+            const $seeMoreLink = $('<h4>').text('See more').attr('id', 'seemore').addClass('info-items')
+            $('.info').append($h5)
+            $('.info').append($h4)
+            $('.info').append($anotherh4)
+            $('.info').append($seeMoreLink)
+            $('#seemore').on('click', (event) => {
+              const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
+              const $h3 = $('<h3>').text('EXTRA INFO ABOUT THE LANDMARK').appendTo('.see-more')
+              const $iframe = $('<iframe>').attr('id', 'wiki-iframe').attr('width', '100%').attr('height', '400').attr('src', 'https://en.wikipedia.org/wiki/Emil_Bach_House')
+              $iframe.appendTo('.see-more')
+              $('#wiki-iframe').css('visibility', 'visible')
+            })
           })
-        })
+        }
       },
       (error) => {
         console.log(error);
