@@ -2,7 +2,7 @@
 
 
 * {
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
 }
 
 body {
@@ -143,22 +143,24 @@ input {
 }
 
 .future {
-  margin: 10px auto;
+  margin: 0 auto;
   text-align: center;
-  width: 85%;
+}
+
+.future-image-container {
   position: relative;
 }
 
 #previous-button {
   position: absolute;
-  top: 55%;
-  left: 5%;
+  top: 47%;
+  left: 8%;
 }
 
 #next-button {
   position: absolute;
-  top: 55%;
-  right: 5%;
+  top: 47%;
+  right: 8%;
 }
 
 .carouselButton {
@@ -166,11 +168,13 @@ input {
   border-radius: 50%;
   text-align: center;
   box-shadow: 1px 1px #fa8d8e;
+  color: #888;
+  background: #f2cd99;
 }
 
 .future-image-container img {
   display: none;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 

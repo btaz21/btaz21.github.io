@@ -68,8 +68,8 @@ $(() => {
           const $img3 = $('<img>').attr('src', 'images/future3.jpg').addClass('future-images').appendTo('.future-image-container')
           const $numOfFutureImages = $('.future-image-container').children().length - 1
           console.log($numOfFutureImages);
-          const $nextButton = $('<button>').attr('id', 'next-button').addClass('carouselButton')
-          const $previousButton = $('<button>').attr('id', 'previous-button').addClass('carouselButton')
+          const $nextButton = $('<button>').attr('id', 'next-button').addClass('carouselButton').text('>')
+          const $previousButton = $('<button>').attr('id', 'previous-button').addClass('carouselButton').text('<')
           $nextButton.appendTo('.future')
           $previousButton.appendTo('.future')
           console.log($numOfFutureImages);
@@ -115,6 +115,7 @@ $(() => {
           }
           $('.landmark-list').on('click', (event) => {
             $('.info').remove()
+            $('.see-more').remove()
             const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
             const $firsth3 = $('<h3>').text('DESCRIPTION OF THE LANDMARK').appendTo('.info')
             const landmarkListItem = $(event.currentTarget).attr('id')
