@@ -1,9 +1,6 @@
 $(() => {
 
     //start here
-    console.log('hello world');
-
-
     eraGenerator = (userInput) => {
       const $div = $('<div>').addClass('periods').appendTo('.left-sidebar')
       const $h3 = $('<h3>').text('CONTEMPORANEOUS ARCHITECTURAL STYLES').appendTo($div)
@@ -86,8 +83,6 @@ $(() => {
       }
     )
   })
-
-
 
 
 

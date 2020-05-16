@@ -19,7 +19,8 @@
 
 h3 {
   font-size: 2.75vw;
-  margin: 0;
+  margin: 5px;
+  color: #04417a;
 }
 
 h1 {
@@ -60,6 +61,11 @@ input {
 
 .landmark-list {
   margin: 0 auto;
+}
+
+.landmark-list:hover {
+  color: #e2884a;
+  cursor: pointer;
 }
 
 .periods {
