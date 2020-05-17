@@ -42,6 +42,9 @@ $(() => {
     }
 
     //function to scroll page to correct location
+    const scrollTo = (offsetValue) => {
+      $("html, body").animate({scrollTop: offsetValue.top}, 'slow');
+    }
 
 
     //where the app begins
@@ -119,7 +122,14 @@ $(() => {
               $('.landmarks').append($h4)
             }
           }
+          //scroll to event
+          const $offsetValue = $('.landmarks').offset()
+          console.log($offsetValue);
+          scrollTo($offsetValue)
+          //
           $('.landmark-list').on('click', (event) => {
+            const $offsetValue = $('.landmark-list').offset()
+            scrollTo($offsetValue)
             $('.info').remove()
             $('.see-more').remove()
             const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
@@ -147,6 +157,8 @@ $(() => {
             const $iFrameSearch = $seeMoreLink.attr('id')
             // console.log($iFrameSearch);
             $('.seemore').on('click', (event) => {
+              const $offsetValue = $('.seemore').offset()
+              scrollTo($offsetValue)
               console.log($iFrameSearch);
               console.log(event.currentTarget);
               $('.see-more').remove()
