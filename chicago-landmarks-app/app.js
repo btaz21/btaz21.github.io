@@ -50,6 +50,7 @@ $(() => {
       $('.periods').remove()
       $('.info').remove()
       $('.see-more').remove()
+      $('.future').remove()
       const userInput = $('input[type="text"]').val()
 
     $.ajax(
@@ -60,7 +61,7 @@ $(() => {
       (data) => {
         if (userInput > currentYear) {
           console.log('nope');
-          $('body').empty()
+          // $('body').empty()
           const $div = $('<div>').addClass('future').appendTo('body')
           const $h2 = $('<h2>').text('We haven\'t made it to ' + userInput + ' yet. But here\'s what it might look like:').appendTo('.future')
           const $anotherdiv = $('<div>').addClass('future-image-container').appendTo($div)
@@ -98,11 +99,10 @@ $(() => {
             }
             $('.future-image-container').children().eq(currentImgIndex).css('display', 'block')
           })
-          //button that says yikes! let me return to the present
-
         }
         else if (userInput < 1800) {
           console.log('also no');
+          //recreate steps for the future part
         }
         else {
           eraGenerator(userInput)
@@ -119,7 +119,7 @@ $(() => {
             $('.info').remove()
             $('.see-more').remove()
             const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
-            const $firsth3 = $('<h3>').text('DESCRIPTION OF THE LANDMARK').appendTo('.info')
+            const $firsth3 = $('<h3>').text('Description').appendTo('.info')
             const landmarkListItem = $(event.currentTarget).attr('id')
             const $h5 = $('<h5>').text(data[landmarkListItem].landmark_name).addClass('info-items')
             const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
@@ -137,7 +137,7 @@ $(() => {
             $('.info').append($seeMoreLink)
             $('#seemore').on('click', (event) => {
               const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
-              const $h3 = $('<h3>').text('EXTRA INFO ABOUT THE LANDMARK').appendTo('.see-more')
+              const $h3 = $('<h3>').text('Additional Information').appendTo('.see-more')
               const $iframe = $('<iframe>').attr('id', 'wiki-iframe').attr('width', '100%').attr('height', '400').attr('src', 'https://en.wikipedia.org/wiki/Emil_Bach_House')
               $iframe.appendTo('.see-more')
               $('#wiki-iframe').css('visibility', 'visible')
@@ -150,6 +150,10 @@ $(() => {
       }
     )
   })
+
+  // $('#return').on('click') = (event) => {
+  //
+  // }
 
 
 
