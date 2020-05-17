@@ -111,7 +111,13 @@ $(() => {
         }
         else if (userInput < 1800) {
           console.log('also no');
-          //recreate steps for the future part
+          eraGenerator(userInput)
+          const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
+          const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
+          const $h4 = $('<h4>').text('No landmarks available for this year')
+          $('.landmarks').append($h4)
+          const $offsetValue = $('.landmarks').offset()
+          scrollTo($offsetValue)
         }
         else {
           eraGenerator(userInput)

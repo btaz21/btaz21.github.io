@@ -3,6 +3,8 @@
 getting iframes to connect within page
 finding a way to pass in a search query to these iframes so that it opens up a page you don't have to click further
 getting pages to scroll down
+getting @media query to work on my phone, despite pixel size being correct
+need to push data into array so that i can sort some things (alphabetize, check for lowest year, etc)
 
 
 //References:
@@ -12,3 +14,4 @@ getting pages to scroll down
 //https://www.w3schools.com/jsref/jsref_getfullyear.asp?fbclid=IwAR0v4yMWMQdQ1tdPREJu5CuJwlLbKPcXRccymrBMOzEZ12Kx1hQ9BrbxZ5I
 //https://stackoverflow.com/questions/21530274/format-for-a-url-that-goes-to-google-image-search
 https://w3bits.com/rainbow-text/
+https://www.youtube.com/watch?v=N6bqSR1oLlc
