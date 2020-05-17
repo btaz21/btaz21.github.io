@@ -129,7 +129,7 @@ $(() => {
             const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
             const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
             const $seeMoreLink = $('<h4>').text('Wikipedia').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=')
-            const $imagesLink = $('<h4>').text('Images').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://www.google.com/search?tbm=isch&q=')
+            const $imagesLink = $('<h4>').text('Images').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://www.flickr.com/search/?text=')
             let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
             $dateDesignated = $dateDesignated.text()
             let $reformattedDate = new Date($dateDesignated)
@@ -178,10 +178,3 @@ $(() => {
     //end here
 
 })
-
-
-//References:
-//http://www.phmc.state.pa.us/portal/communities/architecture/styles/mid-19th-century.html
-//https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-//https://www.w3schools.com/jsref/jsref_substr.asp
-//https://www.w3schools.com/jsref/jsref_getfullyear.asp?fbclid=IwAR0v4yMWMQdQ1tdPREJu5CuJwlLbKPcXRccymrBMOzEZ12Kx1hQ9BrbxZ5I
