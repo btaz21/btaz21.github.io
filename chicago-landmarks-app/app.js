@@ -58,6 +58,7 @@ $(() => {
       $('.see-more').remove()
       $('.future').remove()
       const userInput = $('input[type="text"]').val()
+      $('.search-bar').css('background-color', 'white')
 
     $.ajax(
       {
@@ -82,6 +83,8 @@ $(() => {
           $previousButton.appendTo('.future-image-container')
           $returnButton.appendTo('.future')
           console.log($numOfFutureImages);
+          const $offsetValue = $('.future').offset()
+          scrollTo($offsetValue)
 
           $('#next-button').on('click', () => {
             $('.future-image-container').children().eq(currentImgIndex).css('display', 'none')
@@ -139,7 +142,7 @@ $(() => {
             const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
             const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
             const $seeMoreLink = $('<h4>').text('Wikipedia').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=')
-            const $imagesLink = $('<h4>').text('Images').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://www.flickr.com/search/?text=')
+            const $imagesLink = $('<h4>').text('Images').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://www.archdaily.com/search/all?q=')
             let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
             $dateDesignated = $dateDesignated.text()
             let $reformattedDate = new Date($dateDesignated)
