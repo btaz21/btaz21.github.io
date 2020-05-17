@@ -2,18 +2,17 @@ $(() => {
 
     //start here
 
+    //some global variable declarations
     let currentYear = 2020
     let currentImgIndex = 0
 
 
 
-
-
     eraGenerator = (userInput) => {
       const $div = $('<div>').addClass('periods').appendTo('.left-sidebar')
-      const $h3 = $('<h3>').text('CONTEMPORANEOUS ARCHITECTURAL STYLES').appendTo($div)
+      const $h3 = $('<h3>').text('Contemporaneous Architectural Styles').appendTo($div)
       const $h4 = $('<h4>').addClass('styles')
-      $h4.text(userInput).attr('id', 'year')
+      $h4.text('c.' + userInput).attr('id', 'year')
       $('.periods').append($h4)
       if (userInput >= 1800 && userInput <= 1829) {
         const architectureEra = $('<h4>').addClass('styles')
@@ -43,9 +42,10 @@ $(() => {
     }
 
 
-
+    //where the app begins
     $('form').on('submit', (event) => {
       event.preventDefault()
+      $('.about-container').remove()
       $('.landmarks').remove()
       $('.periods').remove()
       $('.info').remove()
@@ -68,11 +68,12 @@ $(() => {
           const $img2 = $('<img>').attr('src', 'images/future2.jpg').addClass('future-images').appendTo('.future-image-container')
           const $img3 = $('<img>').attr('src', 'images/future3.jpg').addClass('future-images').appendTo('.future-image-container')
           const $numOfFutureImages = $('.future-image-container').children().length - 1
-          console.log($numOfFutureImages);
           const $nextButton = $('<button>').attr('id', 'next-button').addClass('carouselButton').text('>')
           const $previousButton = $('<button>').attr('id', 'previous-button').addClass('carouselButton').text('<')
-          $nextButton.appendTo('.future')
-          $previousButton.appendTo('.future')
+          const $returnButton = $('<button>').attr('id', 'return').text('Yikes! Get Me Out of Here!')
+          $nextButton.appendTo('.future-image-container')
+          $previousButton.appendTo('.future-image-container')
+          $returnButton.appendTo('.future')
           console.log($numOfFutureImages);
 
           $('#next-button').on('click', () => {
@@ -106,7 +107,7 @@ $(() => {
         else {
           eraGenerator(userInput)
           const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
-          const $h3 = $('<h3>').text('HISTORICAL LANDMARKS BUILT IN ' + userInput).appendTo($div)
+          const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
           for (let i = 0; i < data.length; i++) {
             if (data[i].date_built === userInput) {
               const $h4 = $('<h4>')
@@ -124,9 +125,15 @@ $(() => {
             const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
             const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
             const $seeMoreLink = $('<h4>').text('See more').attr('id', 'seemore').addClass('info-items')
+            let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
+            $dateDesignated = $dateDesignated.text()
+            let $reformattedDate = new Date($dateDesignated)
+            $reformattedDate = $reformattedDate.getFullYear()
+            let $dateDesignatedH4 = $('<h4>').text('Landmark Designation Date: ' + $reformattedDate)
             $('.info').append($h5)
             $('.info').append($h4)
             $('.info').append($anotherh4)
+            $('.info').append($dateDesignatedH4)
             $('.info').append($seeMoreLink)
             $('#seemore').on('click', (event) => {
               const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
@@ -156,3 +163,5 @@ $(() => {
 //References:
 //http://www.phmc.state.pa.us/portal/communities/architecture/styles/mid-19th-century.html
 //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+//https://www.w3schools.com/jsref/jsref_substr.asp
+//https://www.w3schools.com/jsref/jsref_getfullyear.asp?fbclid=IwAR0v4yMWMQdQ1tdPREJu5CuJwlLbKPcXRccymrBMOzEZ12Kx1hQ9BrbxZ5I
