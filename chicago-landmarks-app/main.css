@@ -240,7 +240,7 @@ input {
   color: white;
 }
 
-#seemore {
+.seemore {
   color: blue;
   cursor: pointer;
   text-decoration: underline;
@@ -272,10 +272,10 @@ iframe {
     display: none;
   }
 
-  /* .image {
-    justify-content: center;
-    width: 100%;
-  } */
+  h3 {
+    font-size: 1.7vw;
+    font-weight: 500;
+  }
 
   .left-sidebar {
     display: flex;
@@ -319,7 +319,6 @@ iframe {
 
   .about h1 {
     font-size: 2.5vw;
-
   }
 
   .about h1:hover {
@@ -335,6 +334,10 @@ iframe {
 
   .styles {
     margin-top: 40px;
+  }
+
+  .info h5 {
+    font-size: 1.7vw;
   }
 
 

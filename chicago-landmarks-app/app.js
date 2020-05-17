@@ -5,7 +5,7 @@ $(() => {
     //some global variable declarations
     let currentYear = 2020
     let currentImgIndex = 0
-
+    //get lowest year variable by iterating through and finding lowest
 
 
     eraGenerator = (userInput) => {
@@ -41,11 +41,14 @@ $(() => {
       }
     }
 
+    //function to scroll page to correct location
+
 
     //where the app begins
     $('form').on('submit', (event) => {
       event.preventDefault()
-      $('.about-container').remove()
+      // $('.about-container').remove()
+      $('.main-content').slideDown()
       $('.landmarks').remove()
       $('.periods').remove()
       $('.info').remove()
@@ -125,7 +128,8 @@ $(() => {
             const $h5 = $('<h5>').text(data[landmarkListItem].landmark_name).addClass('info-items')
             const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
             const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
-            const $seeMoreLink = $('<h4>').text('See more').attr('id', 'seemore').addClass('info-items')
+            const $seeMoreLink = $('<h4>').text('Wikipedia').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=')
+            const $imagesLink = $('<h4>').text('Images').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://www.google.com/search?tbm=isch&q=')
             let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
             $dateDesignated = $dateDesignated.text()
             let $reformattedDate = new Date($dateDesignated)
@@ -139,12 +143,20 @@ $(() => {
             $('.info').append($anotherh4)
             $('.info').append($dateDesignatedH4)
             $('.info').append($seeMoreLink)
-            $('#seemore').on('click', (event) => {
+            $('.info').append($imagesLink)
+            const $iFrameSearch = $seeMoreLink.attr('id')
+            // console.log($iFrameSearch);
+            $('.seemore').on('click', (event) => {
+              console.log($iFrameSearch);
+              console.log(event.currentTarget);
+              $('.see-more').remove()
               const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
               const $h3 = $('<h3>').text('Additional Information').appendTo('.see-more')
-              const $iframe = $('<iframe>').attr('id', 'wiki-iframe').attr('width', '100%').attr('height', '400').attr('src', 'https://en.wikipedia.org/wiki/Emil_Bach_House')
+              const $iframe = $('<iframe>').attr('id', 'iframe').attr('width', '100%').attr('height', '600').attr('src', $(event.currentTarget).attr('name') + $iFrameSearch)
+              // const $iframe2 = $iframe.clone().attr('src', 'https://www.google.com/search?tbm=isch&q=')
               $iframe.appendTo('.see-more')
-              $('#wiki-iframe').css('visibility', 'visible')
+              // $iframe2.appendTo('.see-more')
+              $('#iframe').css('visibility', 'visible')
             })
           })
         }
