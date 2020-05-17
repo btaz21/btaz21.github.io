@@ -109,6 +109,7 @@ $(() => {
           const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
           const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
           for (let i = 0; i < data.length; i++) {
+            //work on this part to make sure it's only accepting first 4 characters
             if (data[i].date_built === userInput) {
               const $h4 = $('<h4>')
               $h4.text(data[i].landmark_name).attr('id', i).addClass('landmark-list')
