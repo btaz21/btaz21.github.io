@@ -22,8 +22,9 @@ body {
 }
 
 
-.about-container img {
-  width: 100%;
+.about-image img {
+  /* width: 100%; */
+  display: none;
 }
 
 .about {
@@ -301,6 +302,7 @@ iframe {
   }
 
   .about-image img {
+    display: block;
     width: 100%;
     filter: grayscale(100%);
     border-radius: 20%;

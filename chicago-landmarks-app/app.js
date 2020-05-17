@@ -130,6 +130,9 @@ $(() => {
             let $reformattedDate = new Date($dateDesignated)
             $reformattedDate = $reformattedDate.getFullYear()
             let $dateDesignatedH4 = $('<h4>').text('Landmark Designation Date: ' + $reformattedDate)
+            //create stacking elements using transform css NEED TO WORK ON THIS
+            // $('.info').css('transform', 'translateY(-290px)')
+            // $('.info').css('background-color', '#04417a').css('border-radius', '0px')
             $('.info').append($h5)
             $('.info').append($h4)
             $('.info').append($anotherh4)
