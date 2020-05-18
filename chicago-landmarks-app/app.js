@@ -13,7 +13,7 @@ $(() => {
       const $div = $('<div>').addClass('periods').appendTo('.left-sidebar')
       const $h3 = $('<h3>').text('Contemporaneous Architectural Styles').appendTo($div)
       const $h4 = $('<h4>').addClass('styles')
-      $h4.text('c.' + userInput).attr('id', 'year')
+      $h4.text(userInput).attr('id', 'year')
       $('.periods').append($h4)
       if (userInput >= 1800 && userInput <= 1829) {
         const architectureEra = $('<h4>').addClass('styles')
@@ -72,7 +72,7 @@ $(() => {
       $('.see-more').remove()
       $('.future').remove()
       const userInput = $('input[type="text"]').val()
-      $('.search-bar').css('background-color', 'white')
+      $('.search-bar').css('background-color', 'rgba(255, 171, 110, 0.8)').css('border', '1px solid #DBD7D7')
 
     $.ajax(
       {
@@ -84,14 +84,13 @@ $(() => {
           yearArray.push(data[i].date_built)
         }
         if (userInput > currentYear) {
-          console.log('nope');
-          // $('body').empty()
           const $div = $('<div>').addClass('future').appendTo('body')
           const $h2 = $('<h2>').text('We haven\'t made it to ' + userInput + ' yet. But here\'s what it might look like:').appendTo('.future')
           const $anotherdiv = $('<div>').addClass('future-image-container').appendTo($div)
           const $img = $('<img>').attr('src', 'images/future1.jpg').addClass('future-images').appendTo('.future-image-container')
           const $img2 = $('<img>').attr('src', 'images/future2.jpg').addClass('future-images').appendTo('.future-image-container')
           const $img3 = $('<img>').attr('src', 'images/future3.jpg').addClass('future-images').appendTo('.future-image-container')
+          const $img4 = $('<img>').attr('src', 'images/future4.jpg').addClass('future-images').appendTo('.future-image-container')
           const $numOfFutureImages = $('.future-image-container').children().length - 1
           const $nextButton = $('<button>').attr('id', 'next-button').addClass('lnr lnr-chevron-right')
           const $previousButton = $('<button>').attr('id', 'previous-button').addClass('lnr lnr-chevron-left')
@@ -99,7 +98,6 @@ $(() => {
           $nextButton.appendTo('.future-image-container')
           $previousButton.appendTo('.future-image-container')
           $returnButton.appendTo('.future')
-          console.log($numOfFutureImages);
           // const $offsetValue = $('.future').offset()
           scrollTo($('.future').offset())
           $('#next-button').on('click', () => {
@@ -131,7 +129,6 @@ $(() => {
           })
         }
         else if (yearArray.includes(userInput) === false) {
-          console.log('also no');
           eraGenerator(userInput)
           const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
           const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
@@ -140,15 +137,11 @@ $(() => {
           // const $offsetValue = $('.landmarks').offset()
           scrollTo($('.landmarks').offset())
         }
-        // else if (userInput !== data) {
-        //   console.log('nope');
-        // }
         else {
           eraGenerator(userInput)
           const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
           const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
           for (let i = 0; i < data.length; i++) {
-            //work on this part to make sure it's only accepting first 4 characters
             if (data[i].date_built === userInput) {
               const $h4 = $('<h4>')
               $h4.text(data[i].landmark_name).attr('id', i).addClass('landmark-list')
@@ -172,7 +165,7 @@ $(() => {
             const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
             const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
             const $seeMoreLink = $('<h4>').text('Wikipedia').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=')
-            const $imagesLink = $('<h4>').text('Images').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://www.archdaily.com/search/all?q=')
+            const $imagesLink = $('<h4>').text('Images').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://www.youtube.com/results?search_query=')
             let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
             $dateDesignated = $dateDesignated.text()
             let $reformattedDate = new Date($dateDesignated)

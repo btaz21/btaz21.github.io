@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Jost', sans-serif;
-  /* margin: 0 auto; */
+  margin: 0 auto;
 }
 
 .container {
@@ -16,13 +16,11 @@ body {
 }
 
 .search-bar {
-  /* margin: 15px 0px; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   position: fixed;
   width: 100%;
-  /* background-color: white; */
   z-index: 1;
 }
 
@@ -269,7 +267,7 @@ iframe {
   100% {left: 0px; top: 0px;}
 }
 
-@media (min-width: 800px) {
+@media screen and (min-width: 800px) {
 
   * {
     /* border: 1px solid gold; */
@@ -326,6 +324,10 @@ iframe {
     position: absolute;
     top: 4%;
     /* box-shadow: 7px 7px 30px #e2884a; */
+  }
+
+  .about-image img:hover {
+    filter: none;
   }
 
   .about {
