@@ -267,7 +267,7 @@ iframe {
   100% {left: 0px; top: 0px;}
 }
 
-@media screen and (min-width: 800px) {
+@media (min-width: 900px) {
 
   * {
     /* border: 1px solid gold; */
