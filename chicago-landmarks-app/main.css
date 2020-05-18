@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive');
 
 * {
-  /* border: 1px solid gold; */
+  border: 1px solid gold;
   font-weight: 200;
 }
 
@@ -27,7 +27,7 @@ body {
 
 
 .main-images {
-  /* margin-top: 120px; */
+  /* height: 400px; */
 }
 
 .about-image img {

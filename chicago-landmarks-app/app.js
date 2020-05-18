@@ -1,22 +1,23 @@
 $(() => {
 
-    //start here
 
     //some global variable declarations
     const currentYear = new Date().getFullYear()
     let currentImgIndex = 0
     let yearArray = []
-    //get lowest year variable by iterating through and finding lowest
 
 
+
+    //hover event on about image to show hint
     $('.about-image').hover((event) => {
-      console.log('hi');
       $('.hint').css('display', 'block')
     }, (event) => {
-      console.log('yo');
       $('.hint').css('display', 'none')
     })
 
+
+
+    //click event on about image to show more about gold building
     $('#gold-building').on('click', (event) => {
       $('.landmarks').remove()
       $('.periods').remove()
@@ -29,6 +30,7 @@ $(() => {
     })
 
 
+    //function that generates the div showing contemporaneous architectural styles
     eraGenerator = (userInput) => {
       const $div = $('<div>').addClass('periods').appendTo('.left-sidebar')
       const $h3 = $('<h3>').text('Contemporaneous Architectural Styles').appendTo($div)
@@ -66,9 +68,6 @@ $(() => {
     const scrollTo = (offsetValue) => {
       $("html, body").animate({scrollTop: offsetValue.top}, 'slow')
     }
-
-    //function to clean up yearArray
-    //function to find values not present in yearArray
 
 
     //where the app begins
@@ -208,9 +207,6 @@ $(() => {
               let $reformattedDate = new Date($dateDesignated)
               $reformattedDate = $reformattedDate.getFullYear()
               let $dateDesignatedH4 = $('<h4>').text('Landmark Designation Date: ' + $reformattedDate).attr('id', 'last-info-item')
-              //create stacking elements using transform css NEED TO WORK ON THIS
-              // $('.info').css('transform', 'translateY(-290px)')
-              // $('.info').css('background-color', '#04417a').css('border-radius', '0px')
               $('.info').append($h5)
               $('.info').append($h4)
               $('.info').append($anotherh4)
@@ -244,8 +240,5 @@ $(() => {
 
 
 
-
-
-    //end here
 
 })
