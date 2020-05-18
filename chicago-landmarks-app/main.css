@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  margin: 80px auto;
+  margin: 120px auto;
 }
 
 .search-bar {
@@ -22,7 +22,7 @@ body {
   position: fixed;
   width: 100%;
   z-index: 1;
-  transform: translateY(-80px);
+  transform: translateY(-120px);
 }
 
 
