@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Jost', sans-serif;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .container {
@@ -324,9 +324,6 @@ iframe {
     /* border: 1px solid gold; */
   }
 
-  .container {
-    /* margin: 0 auto; */
-  }
 
   .search-bar {
     transform: none;
