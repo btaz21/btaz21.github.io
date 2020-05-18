@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  margin: 0 auto;
+  margin: 80px auto;
 }
 
 .search-bar {
@@ -22,6 +22,12 @@ body {
   position: fixed;
   width: 100%;
   z-index: 1;
+  transform: translateY(-80px);
+}
+
+
+.main-images {
+  /* margin-top: 120px; */
 }
 
 .about-image img {
@@ -172,7 +178,7 @@ input {
 
 #main-mobile {
   width: 100%;
-  margin-top: 120px;
+  /* margin-top: 120px; */
 }
 
 .future {
@@ -272,6 +278,14 @@ iframe {
 
   * {
     /* border: 1px solid gold; */
+  }
+
+  .container {
+    margin: 0 auto;
+  }
+
+  .search-bar {
+    transform: none;
   }
 
   .main-images {
