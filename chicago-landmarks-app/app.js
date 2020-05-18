@@ -3,8 +3,9 @@ $(() => {
     //start here
 
     //some global variable declarations
-    let currentYear = 2020
+    const currentYear = new Date().getFullYear()
     let currentImgIndex = 0
+    let yearArray = []
     //get lowest year variable by iterating through and finding lowest
 
 
@@ -46,6 +47,19 @@ $(() => {
       $("html, body").animate({scrollTop: offsetValue.top}, 'slow');
     }
 
+    //function to clean up yearArray
+    const cleanUpArray = () => {
+      for (let i = 0; i < yearArray.length; i++) {
+        if (yearArray[i] === undefined) {
+          yearArray.splice(i, 50)
+        }
+      }
+      console.log(yearArray);
+    }
+
+
+    //function to find values not present in yearArray
+
 
     //where the app begins
     $('form').on('submit', (event) => {
@@ -66,6 +80,9 @@ $(() => {
       }
     ).then(
       (data) => {
+        // for (let i = 0; i < data.length; i++) {
+        //   yearArray.push(data[i].date_built)
+        // }
         if (userInput > currentYear) {
           console.log('nope');
           // $('body').empty()
@@ -76,8 +93,8 @@ $(() => {
           const $img2 = $('<img>').attr('src', 'images/future2.jpg').addClass('future-images').appendTo('.future-image-container')
           const $img3 = $('<img>').attr('src', 'images/future3.jpg').addClass('future-images').appendTo('.future-image-container')
           const $numOfFutureImages = $('.future-image-container').children().length - 1
-          const $nextButton = $('<button>').attr('id', 'next-button').addClass('carouselButton').text('>')
-          const $previousButton = $('<button>').attr('id', 'previous-button').addClass('carouselButton').text('<')
+          const $nextButton = $('<button>').attr('id', 'next-button').addClass('lnr lnr-chevron-right')
+          const $previousButton = $('<button>').attr('id', 'previous-button').addClass('lnr lnr-chevron-left')
           const $returnButton = $('<button>').attr('id', 'return').text('Yikes! Get Me Out of Here!')
           $nextButton.appendTo('.future-image-container')
           $previousButton.appendTo('.future-image-container')
@@ -108,6 +125,11 @@ $(() => {
             }
             $('.future-image-container').children().eq(currentImgIndex).css('display', 'block')
           })
+          $('#return').on('click', () => {
+            $('body').fadeOut('slow', () => {
+              location.reload()
+            })
+          })
         }
         else if (userInput < 1800) {
           console.log('also no');
@@ -119,6 +141,9 @@ $(() => {
           const $offsetValue = $('.landmarks').offset()
           scrollTo($offsetValue)
         }
+        // else if (userInput !== data) {
+        //   console.log('nope');
+        // }
         else {
           eraGenerator(userInput)
           const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')

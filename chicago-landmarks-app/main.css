@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Jost', sans-serif;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .container {
@@ -207,14 +207,22 @@ input {
   right: 5%;
 }
 
-.carouselButton {
-  padding: 10px;
+.lnr {
+  padding: 20px;
   border-radius: 50%;
   text-align: center;
-  box-shadow: 1px 1px #688daf;
-  color: #888;
-  background: #f2cd99;
+  /* box-shadow: 1px 1px #688daf; */
+  color: 	#e66926;
+  background-color: #B3DDF2;
   position: absolute;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.lnr:focus {
+  outline: 1px solid white;
+  background-color: #e66926;
+  color: #B3DDF2;
 }
 
 /* .future-image-container img {

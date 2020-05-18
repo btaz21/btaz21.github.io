@@ -15,3 +15,4 @@ need to push data into array so that i can sort some things (alphabetize, check 
 //https://stackoverflow.com/questions/21530274/format-for-a-url-that-goes-to-google-image-search
 https://w3bits.com/rainbow-text/
 https://www.youtube.com/watch?v=N6bqSR1oLlc
+https://stackoverflow.com/questions/29884654/button-that-refreshes-the-page-on-click
