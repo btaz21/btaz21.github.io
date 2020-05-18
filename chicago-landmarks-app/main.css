@@ -8,11 +8,11 @@
 
 body {
   font-family: 'Jost', sans-serif;
-  /* margin: 5px 30px; */
+  margin: 0;
 }
 
 .container {
-  margin: 0px 10px;
+  /* margin: 0; */
 }
 
 .search-bar {
@@ -257,7 +257,7 @@ input {
   padding: 15px;
   font-size: 18px;
   font-family: inherit;
-  margin: 20px auto;
+  margin: 50px auto;
 }
 
 #year {
