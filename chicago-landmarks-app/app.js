@@ -17,9 +17,16 @@ $(() => {
       $('.hint').css('display', 'none')
     })
 
-    // $('.about-image').on('click', (event) => {
-    //
-    // })
+    $('#gold-building').on('click', (event) => {
+      $('.landmarks').remove()
+      $('.periods').remove()
+      $('.info').remove()
+      $('.see-more').remove()
+      $('.future').remove()
+      const $goldBuilding = $(event.currentTarget).attr('id')
+      console.log($goldBuilding);
+      accessApi('1929', $goldBuilding)
+    })
 
 
     eraGenerator = (userInput) => {
@@ -76,150 +83,166 @@ $(() => {
       $('.future').remove()
       const userInput = $('input[type="text"]').val()
       $('.search-bar').css('background-color', 'rgba(255, 171, 110, 0.8)').css('border', '1px solid #DBD7D7')
-
-    $.ajax(
-      {
-        url: 'https://data.cityofchicago.org/resource/tdab-kixi.json'
-      }
-    ).then(
-      (data) => {
-        for (let i = 0; i < data.length; i++) {
-          yearArray.push(data[i].date_built)
-        }
-        if (userInput > currentYear) {
-          const $div = $('<div>').addClass('future').appendTo('body')
-          const $h2 = $('<h2>').text('We haven\'t made it to ' + userInput + ' yet. But here\'s what it might look like:').appendTo('.future')
-          const $anotherdiv = $('<div>').addClass('future-image-container').appendTo($div)
-          const $img = $('<img>').attr('src', 'images/future1.jpg').addClass('future-images').appendTo('.future-image-container')
-          const $img2 = $('<img>').attr('src', 'images/future2.jpg').addClass('future-images').appendTo('.future-image-container')
-          const $img3 = $('<img>').attr('src', 'images/future3.jpg').addClass('future-images').appendTo('.future-image-container')
-          const $img4 = $('<img>').attr('src', 'images/future4.jpg').addClass('future-images').appendTo('.future-image-container')
-          const $numOfFutureImages = $('.future-image-container').children().length - 1
-          const $nextButton = $('<button>').attr('id', 'next-button').addClass('lnr lnr-chevron-right')
-          const $previousButton = $('<button>').attr('id', 'previous-button').addClass('lnr lnr-chevron-left')
-          const $returnButton = $('<button>').attr('id', 'return').text('Yikes! Get Me Out of Here!')
-          $nextButton.appendTo('.future-image-container')
-          $previousButton.appendTo('.future-image-container')
-          $returnButton.appendTo('.future')
-          // const $offsetValue = $('.future').offset()
-          scrollTo($('.future').offset())
-          $('#next-button').on('click', () => {
-            $('.future-image-container').children().eq(currentImgIndex).css('display', 'none')
-            if (currentImgIndex < $numOfFutureImages) {
-              currentImgIndex ++
-            }
-            else {
-              currentImgIndex = 0
-            }
-            $('.future-image-container').children().eq(currentImgIndex).css('display', 'block')
-          })
+      accessApi(userInput)
+    })
 
 
-          $('#previous-button').on('click', () => {
-            $('.future-image-container').children().eq(currentImgIndex).css('display', 'none')
-            if (currentImgIndex > 0) {
-              currentImgIndex --
-            }
-            else {
-              currentImgIndex = $numOfFutureImages
-            }
-            $('.future-image-container').children().eq(currentImgIndex).css('display', 'block')
-          })
-          $('#return').on('click', () => {
-            $('body').fadeOut('slow', () => {
-              location.reload()
-            })
-          })
+    const accessApi = (userInput, imageClicks) => {
+      $.ajax(
+        {
+          url: 'https://data.cityofchicago.org/resource/tdab-kixi.json'
         }
-        else if (userInput < 1833) {
-          const $div = $('<div>').addClass('modal')
-          const $anotherDiv = $('<div>').addClass('modal-info').appendTo($div)
-          const $h3 = $('<h3>').text('Sounds like you need a history lesson!').appendTo($anotherDiv)
-          const $h4 = $('<h4>').text('The southern wing of the Noble-Seymour-Crippen house, built in 1833 and residing in Norwood Park, is considered to be the oldest existing building in Chicago. This is a source of controversy, however, as Norwood Park was not annexed to Chicago until 1893').appendTo($anotherDiv)
-          const $span = $('<span>').addClass('close-modal').appendTo($anotherDiv)
-          $div.insertAfter($('.search-bar'))
-          $div.css('width', '100%').css('border', '1px solid grey').css('position', 'fixed').css('height', '100%')
-          $span.text('RETURN').css('border', '1px solid #575656').css('border-radius', '6%').css('background-color', '#8c8c8c').css('padding', '10px 15px')
-          // $('form').off()
-          $('.close-modal, .modal').on('click', () => {
-            $('.modal').remove()
-          })
-        }
-        else if (yearArray.includes(userInput) === false) {
-          eraGenerator(userInput)
-          const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
-          const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
-          const $h4 = $('<h4>').text('No landmarks available for this year')
-          $('.landmarks').append($h4)
-          // const $offsetValue = $('.landmarks').offset()
-          scrollTo($('.landmarks').offset())
-        }
-        else {
-          eraGenerator(userInput)
-          const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
-          const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
+      ).then(
+        (data) => {
           for (let i = 0; i < data.length; i++) {
-            if (data[i].date_built === userInput) {
-              const $h4 = $('<h4>')
-              $h4.text(data[i].landmark_name).attr('id', i).addClass('landmark-list')
-              $('.landmarks').append($h4)
-            }
+            yearArray.push(data[i].date_built)
           }
-          //scroll to event
-          const $offsetValue = $('.landmarks').offset()
-          console.log($offsetValue);
-          scrollTo($offsetValue)
-          $('.landmark-list').on('click', (event) => {
-            // const $offsetValue = $('.landmark-list').offset()
-            scrollTo($('.landmark-list').offset())
-            $('.info').remove()
-            $('.see-more').remove()
-            const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
-            const $firsth3 = $('<h3>').text('Description').appendTo('.info')
-            const landmarkListItem = $(event.currentTarget).attr('id')
-            const $h5 = $('<h5>').text(data[landmarkListItem].landmark_name).addClass('info-items')
-            const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
-            const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
-            const $seeMoreLink = $('<h4>').text('Wikipedia').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=')
-            const $imagesLink = $('<h4>').text('Preservation Chicago').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://preservationchicago.org/?s=')
-            let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
-            $dateDesignated = $dateDesignated.text()
-            let $reformattedDate = new Date($dateDesignated)
-            $reformattedDate = $reformattedDate.getFullYear()
-            let $dateDesignatedH4 = $('<h4>').text('Landmark Designation Date: ' + $reformattedDate).attr('id', 'last-info-item')
-            //create stacking elements using transform css NEED TO WORK ON THIS
-            // $('.info').css('transform', 'translateY(-290px)')
-            // $('.info').css('background-color', '#04417a').css('border-radius', '0px')
-            $('.info').append($h5)
-            $('.info').append($h4)
-            $('.info').append($anotherh4)
-            $('.info').append($dateDesignatedH4)
-            $('.info').append($seeMoreLink)
-            $('.info').append($imagesLink)
-            const $iFrameSearch = $seeMoreLink.attr('id')
-            // console.log($iFrameSearch);
-            $('.seemore').on('click', (event) => {
-              // const $offsetValue = $('.seemore').offset()
-              scrollTo($('.seemore').offset())
-              console.log($iFrameSearch);
-              console.log(event.currentTarget);
-              $('.see-more').remove()
-              const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
-              const $h3 = $('<h3>').text('Additional Information').appendTo('.see-more')
-              const $iframe = $('<iframe>').attr('id', 'iframe').attr('width', '100%').attr('height', '600').attr('src', $(event.currentTarget).attr('name') + $iFrameSearch)
-              // const $iframe2 = $iframe.clone().attr('src', 'https://www.google.com/search?tbm=isch&q=')
-              $iframe.appendTo('.see-more')
-              // $iframe2.appendTo('.see-more')
-              $('#iframe').css('visibility', 'visible')
+          if (userInput > currentYear) {
+            const $div = $('<div>').addClass('future').appendTo('body')
+            const $h2 = $('<h2>').text('We haven\'t made it to ' + userInput + ' yet. But here\'s what it might look like:').appendTo('.future')
+            const $anotherdiv = $('<div>').addClass('future-image-container').appendTo($div)
+            const $img = $('<img>').attr('src', 'images/future1.jpg').addClass('future-images').appendTo('.future-image-container')
+            const $img2 = $('<img>').attr('src', 'images/future2.jpg').addClass('future-images').appendTo('.future-image-container')
+            const $img3 = $('<img>').attr('src', 'images/future3.jpg').addClass('future-images').appendTo('.future-image-container')
+            const $img4 = $('<img>').attr('src', 'images/future4.jpg').addClass('future-images').appendTo('.future-image-container')
+            const $numOfFutureImages = $('.future-image-container').children().length - 1
+            const $nextButton = $('<button>').attr('id', 'next-button').addClass('lnr lnr-chevron-right')
+            const $previousButton = $('<button>').attr('id', 'previous-button').addClass('lnr lnr-chevron-left')
+            const $returnButton = $('<button>').attr('id', 'return').text('Yikes! Get Me Out of Here!')
+            $nextButton.appendTo('.future-image-container')
+            $previousButton.appendTo('.future-image-container')
+            $returnButton.appendTo('.future')
+            // const $offsetValue = $('.future').offset()
+            scrollTo($('.future').offset())
+            $('#next-button').on('click', () => {
+              $('.future-image-container').children().eq(currentImgIndex).css('display', 'none')
+              if (currentImgIndex < $numOfFutureImages) {
+                currentImgIndex ++
+              }
+              else {
+                currentImgIndex = 0
+              }
+              $('.future-image-container').children().eq(currentImgIndex).css('display', 'block')
             })
-          })
+
+
+            $('#previous-button').on('click', () => {
+              $('.future-image-container').children().eq(currentImgIndex).css('display', 'none')
+              if (currentImgIndex > 0) {
+                currentImgIndex --
+              }
+              else {
+                currentImgIndex = $numOfFutureImages
+              }
+              $('.future-image-container').children().eq(currentImgIndex).css('display', 'block')
+            })
+            $('#return').on('click', () => {
+              $('body').fadeOut('slow', () => {
+                location.reload()
+              })
+            })
+          }
+          else if (userInput < 1833) {
+            const $div = $('<div>').addClass('modal')
+            const $anotherDiv = $('<div>').addClass('modal-info').appendTo($div)
+            const $h3 = $('<h3>').text('Sounds like you need a history lesson!').appendTo($anotherDiv)
+            const $h4 = $('<h4>').text('The southern wing of the Noble-Seymour-Crippen house, built in 1833 and residing in Norwood Park, is considered to be the oldest existing building in Chicago. This is a source of controversy, however, as Norwood Park was not annexed to Chicago until 1893').appendTo($anotherDiv)
+            const $span = $('<span>').addClass('close-modal').appendTo($anotherDiv)
+            $div.insertAfter($('.search-bar'))
+            $div.css('width', '100%').css('border', '1px solid grey').css('position', 'fixed').css('height', '100%')
+            $span.text('RETURN').css('border', '1px solid #575656').css('border-radius', '6%').css('background-color', '#8c8c8c').css('padding', '10px 15px')
+            // $('form').off()
+            $('.close-modal, .modal').on('click', () => {
+              $('.modal').remove()
+            })
+          }
+          else if (yearArray.includes(userInput) === false) {
+            eraGenerator(userInput)
+            const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
+            const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
+            const $h4 = $('<h4>').text('No landmarks available for this year')
+            $('.landmarks').append($h4)
+            // const $offsetValue = $('.landmarks').offset()
+            scrollTo($('.landmarks').offset())
+          }
+          else if (imageClicks === 'gold-building') {
+            eraGenerator(userInput)
+            const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
+            const $h3 = $('<h3>').text('Historical Landmarks Built in 1929').appendTo($div)
+            const $h4 = $('<h4>').text(data[295].landmark_name).addClass('landmark-list')
+            $('.landmarks').append($h4)
+            const $offsetValue = $('.landmarks').offset()
+            console.log($offsetValue);
+            scrollTo($offsetValue)
+          }
+          else {
+            eraGenerator(userInput)
+            const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
+            const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
+            for (let i = 0; i < data.length; i++) {
+              if (data[i].date_built === userInput) {
+                const $h4 = $('<h4>')
+                $h4.text(data[i].landmark_name).attr('id', i).addClass('landmark-list')
+                $('.landmarks').append($h4)
+              }
+            }
+            //scroll to event
+            const $offsetValue = $('.landmarks').offset()
+            console.log($offsetValue);
+            scrollTo($offsetValue)
+            $('.landmark-list').on('click', (event) => {
+              // const $offsetValue = $('.landmark-list').offset()
+              scrollTo($('.landmark-list').offset())
+              $('.info').remove()
+              $('.see-more').remove()
+              const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
+              const $firsth3 = $('<h3>').text('Description').appendTo('.info')
+              const landmarkListItem = $(event.currentTarget).attr('id')
+              const $h5 = $('<h5>').text(data[landmarkListItem].landmark_name).addClass('info-items')
+              const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
+              const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
+              const $seeMoreLink = $('<h4>').text('Wikipedia').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=')
+              const $imagesLink = $('<h4>').text('Preservation Chicago').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://preservationchicago.org/?s=')
+              let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
+              $dateDesignated = $dateDesignated.text()
+              let $reformattedDate = new Date($dateDesignated)
+              $reformattedDate = $reformattedDate.getFullYear()
+              let $dateDesignatedH4 = $('<h4>').text('Landmark Designation Date: ' + $reformattedDate).attr('id', 'last-info-item')
+              //create stacking elements using transform css NEED TO WORK ON THIS
+              // $('.info').css('transform', 'translateY(-290px)')
+              // $('.info').css('background-color', '#04417a').css('border-radius', '0px')
+              $('.info').append($h5)
+              $('.info').append($h4)
+              $('.info').append($anotherh4)
+              $('.info').append($dateDesignatedH4)
+              $('.info').append($seeMoreLink)
+              $('.info').append($imagesLink)
+              const $iFrameSearch = $seeMoreLink.attr('id')
+              // console.log($iFrameSearch);
+              $('.seemore').on('click', (event) => {
+                // const $offsetValue = $('.seemore').offset()
+                scrollTo($('.seemore').offset())
+                console.log($iFrameSearch);
+                console.log(event.currentTarget);
+                $('.see-more').remove()
+                const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
+                const $h3 = $('<h3>').text('Additional Information').appendTo('.see-more')
+                const $iframe = $('<iframe>').attr('id', 'iframe').attr('width', '100%').attr('height', '600').attr('src', $(event.currentTarget).attr('name') + $iFrameSearch)
+                // const $iframe2 = $iframe.clone().attr('src', 'https://www.google.com/search?tbm=isch&q=')
+                $iframe.appendTo('.see-more')
+                // $iframe2.appendTo('.see-more')
+                $('#iframe').css('visibility', 'visible')
+              })
+            })
+          }
+        },
+        (error) => {
+          console.log(error);
         }
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
-  })
+      )
+    }
+
+
 
 
 
