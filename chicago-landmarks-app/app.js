@@ -44,7 +44,7 @@ $(() => {
 
     //function to scroll page to correct location
     const scrollTo = (offsetValue) => {
-      $("html, body").animate({scrollTop: offsetValue.top}, 'slow');
+      $("html, body").animate({scrollTop: offsetValue.top}, 'slow')
     }
 
     //function to clean up yearArray
@@ -80,9 +80,9 @@ $(() => {
       }
     ).then(
       (data) => {
-        // for (let i = 0; i < data.length; i++) {
-        //   yearArray.push(data[i].date_built)
-        // }
+        for (let i = 0; i < data.length; i++) {
+          yearArray.push(data[i].date_built)
+        }
         if (userInput > currentYear) {
           console.log('nope');
           // $('body').empty()
@@ -100,9 +100,8 @@ $(() => {
           $previousButton.appendTo('.future-image-container')
           $returnButton.appendTo('.future')
           console.log($numOfFutureImages);
-          const $offsetValue = $('.future').offset()
-          scrollTo($offsetValue)
-
+          // const $offsetValue = $('.future').offset()
+          scrollTo($('.future').offset())
           $('#next-button').on('click', () => {
             $('.future-image-container').children().eq(currentImgIndex).css('display', 'none')
             if (currentImgIndex < $numOfFutureImages) {
@@ -131,15 +130,15 @@ $(() => {
             })
           })
         }
-        else if (userInput < 1800) {
+        else if (yearArray.includes(userInput) === false) {
           console.log('also no');
           eraGenerator(userInput)
           const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
           const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
           const $h4 = $('<h4>').text('No landmarks available for this year')
           $('.landmarks').append($h4)
-          const $offsetValue = $('.landmarks').offset()
-          scrollTo($offsetValue)
+          // const $offsetValue = $('.landmarks').offset()
+          scrollTo($('.landmarks').offset())
         }
         // else if (userInput !== data) {
         //   console.log('nope');
@@ -162,8 +161,8 @@ $(() => {
           scrollTo($offsetValue)
           //
           $('.landmark-list').on('click', (event) => {
-            const $offsetValue = $('.landmark-list').offset()
-            scrollTo($offsetValue)
+            // const $offsetValue = $('.landmark-list').offset()
+            scrollTo($('.landmark-list').offset())
             $('.info').remove()
             $('.see-more').remove()
             const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
@@ -191,8 +190,8 @@ $(() => {
             const $iFrameSearch = $seeMoreLink.attr('id')
             // console.log($iFrameSearch);
             $('.seemore').on('click', (event) => {
-              const $offsetValue = $('.seemore').offset()
-              scrollTo($offsetValue)
+              // const $offsetValue = $('.seemore').offset()
+              scrollTo($('.seemore').offset())
               console.log($iFrameSearch);
               console.log(event.currentTarget);
               $('.see-more').remove()
