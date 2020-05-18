@@ -146,10 +146,10 @@ $(() => {
             const $anotherDiv = $('<div>').addClass('modal-info').appendTo($div)
             const $h3 = $('<h3>').text('Sounds like you need a history lesson!').appendTo($anotherDiv)
             const $h4 = $('<h4>').text('The southern wing of the Noble-Seymour-Crippen house, built in 1833 and residing in Norwood Park, is considered to be the oldest existing building in Chicago. This is a source of controversy, however, as Norwood Park was not annexed to Chicago until 1893').appendTo($anotherDiv)
-            const $span = $('<span>').addClass('close-modal').appendTo($anotherDiv)
+            const $button = $('<button>').addClass('close-modal').appendTo($anotherDiv)
             $div.insertAfter($('.search-bar'))
             $div.css('width', '100%').css('border', '1px solid grey').css('position', 'fixed').css('height', '100%')
-            $span.text('RETURN').css('border', '1px solid #575656').css('border-radius', '6%').css('background-color', '#8c8c8c').css('padding', '10px 15px')
+            $button.text('RETURN').css('border', '1px solid #575656').css('border-radius', '6%').css('background-color', '#8c8c8c').css('padding', '15px 20px')
             // $('form').off()
             $('.close-modal, .modal').on('click', () => {
               $('.modal').remove()
