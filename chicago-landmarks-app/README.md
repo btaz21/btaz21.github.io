@@ -18,3 +18,4 @@ https://w3bits.com/rainbow-text/
 https://www.youtube.com/watch?v=N6bqSR1oLlc
 https://stackoverflow.com/questions/29884654/button-that-refreshes-the-page-on-click
 https://stackoverflow.com/questions/17344339/media-query-not-working-in-mobile-works-fine-in-chrome
+https://sabe.io/tutorials/how-to-create-modal-popup-box

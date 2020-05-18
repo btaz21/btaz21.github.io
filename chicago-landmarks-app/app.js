@@ -9,6 +9,19 @@ $(() => {
     //get lowest year variable by iterating through and finding lowest
 
 
+    $('.about-image').hover((event) => {
+      console.log('hi');
+      $('.hint').css('display', 'block')
+    }, (event) => {
+      console.log('yo');
+      $('.hint').css('display', 'none')
+    })
+
+    // $('.about-image').on('click', (event) => {
+    //
+    // })
+
+
     eraGenerator = (userInput) => {
       const $div = $('<div>').addClass('periods').appendTo('.left-sidebar')
       const $h3 = $('<h3>').text('Contemporaneous Architectural Styles').appendTo($div)
@@ -48,16 +61,6 @@ $(() => {
     }
 
     //function to clean up yearArray
-    const cleanUpArray = () => {
-      for (let i = 0; i < yearArray.length; i++) {
-        if (yearArray[i] === undefined) {
-          yearArray.splice(i, 50)
-        }
-      }
-      console.log(yearArray);
-    }
-
-
     //function to find values not present in yearArray
 
 
@@ -135,10 +138,10 @@ $(() => {
           const $h4 = $('<h4>').text('The southern wing of the Noble-Seymour-Crippen house, built in 1833 and residing in Norwood Park, is considered to be the oldest existing building in Chicago. This is a source of controversy, however, as Norwood Park was not annexed to Chicago until 1893').appendTo($anotherDiv)
           const $span = $('<span>').addClass('close-modal').appendTo($anotherDiv)
           $div.insertAfter($('.search-bar'))
-          $div.css('width', '100%').css('border', '1px solid grey').css('position', 'fixed').css('opacity', '0.8').css('height', '100%')
+          $div.css('width', '100%').css('border', '1px solid grey').css('position', 'fixed').css('height', '100%')
           $span.text('RETURN').css('border', '1px solid #575656').css('border-radius', '6%').css('background-color', '#8c8c8c').css('padding', '10px 15px')
           // $('form').off()
-          $('.close-modal').on('click', () => {
+          $('.close-modal, .modal').on('click', () => {
             $('.modal').remove()
           })
         }
@@ -166,7 +169,6 @@ $(() => {
           const $offsetValue = $('.landmarks').offset()
           console.log($offsetValue);
           scrollTo($offsetValue)
-          //
           $('.landmark-list').on('click', (event) => {
             // const $offsetValue = $('.landmark-list').offset()
             scrollTo($('.landmark-list').offset())
@@ -179,12 +181,12 @@ $(() => {
             const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
             const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
             const $seeMoreLink = $('<h4>').text('Wikipedia').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=')
-            const $imagesLink = $('<h4>').text('Images').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://www.youtube.com/results?search_query=')
+            const $imagesLink = $('<h4>').text('Preservation Chicago').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://preservationchicago.org/?s=')
             let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
             $dateDesignated = $dateDesignated.text()
             let $reformattedDate = new Date($dateDesignated)
             $reformattedDate = $reformattedDate.getFullYear()
-            let $dateDesignatedH4 = $('<h4>').text('Landmark Designation Date: ' + $reformattedDate)
+            let $dateDesignatedH4 = $('<h4>').text('Landmark Designation Date: ' + $reformattedDate).attr('id', 'last-info-item')
             //create stacking elements using transform css NEED TO WORK ON THIS
             // $('.info').css('transform', 'translateY(-290px)')
             // $('.info').css('background-color', '#04417a').css('border-radius', '0px')
@@ -218,12 +220,6 @@ $(() => {
       }
     )
   })
-
-  // $('#return').on('click') = (event) => {
-  //
-  // }
-
-
 
 
 
