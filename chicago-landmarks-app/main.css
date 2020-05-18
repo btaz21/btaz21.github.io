@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive');
 
 * {
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
   font-weight: 200;
 }
 
@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  /* margin: 120px auto; */
+  /* position: relative; */
 }
 
 .search-bar {
@@ -23,11 +23,12 @@ body {
   width: 100%;
   z-index: 1;
   /* transform: translateY(-120px); */
+  background-color: rgba(255, 171, 110, 0.8);
 }
 
 
 .main-images {
-  /* height: 400px; */
+  /* margin-top: 90px; */
 }
 
 .about-image img {
@@ -327,10 +328,11 @@ iframe {
 
   .search-bar {
     transform: none;
+    background-color: transparent;
   }
 
   .main-images {
-    /* margin-top: 91.39px; */
+    margin-top: 0;
   }
 
   #main-image {
