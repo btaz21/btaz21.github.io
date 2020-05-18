@@ -172,6 +172,7 @@ input {
 
 #main-mobile {
   width: 100%;
+  margin-top: 120px;
 }
 
 .future {
@@ -267,7 +268,7 @@ iframe {
   100% {left: 0px; top: 0px;}
 }
 
-@media (min-width: 900px) {
+@media (min-width: 735px) {
 
   * {
     /* border: 1px solid gold; */

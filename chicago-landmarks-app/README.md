@@ -5,6 +5,7 @@ finding a way to pass in a search query to these iframes so that it opens up a p
 getting pages to scroll down
 getting @media query to work on my phone, despite pixel size being correct
 need to push data into array so that i can sort some things (alphabetize, check for lowest year, etc)
+page not refreshing at the top
 
 
 //References:
