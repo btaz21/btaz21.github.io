@@ -77,6 +77,7 @@ $(() => {
       event.preventDefault()
       // $('.about-container').remove()
       // $('.main-content').slideDown()
+      $('.modal').remove()
       $('.gold').remove()
       $('.landmarks').remove()
       $('.periods').remove()
