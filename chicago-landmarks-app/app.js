@@ -251,6 +251,8 @@ $(() => {
             const $offsetValue = $('.landmarks').offset()
             console.log($offsetValue);
             scrollTo($offsetValue)
+            //re-check this function
+            // addingInTheBadData(data, userInput)
             additionalInfoGenerator(data)
           }
         },
