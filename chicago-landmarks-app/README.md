@@ -1,13 +1,16 @@
 ## Chicago Landmarks App
 ============================
 
-The Chicago Landmarks App allows you to search the Chicago Open Data Portal for historical landmarks by year they were built. In addition to showing a list of names, you will have the option to see more info on each landmark (i.e. architect, designation date, address).
+The Chicago Landmarks App allows you to search the Chicago Open Data Portal for historical landmarks by year they were built. In addition to showing a list of names, you will have the option to see other relevant info on each landmark (i.e. architect, designation date, address).
 
 API
+https://data.cityofchicago.org/
 
-Wireframes
+Wireframes:
 
-Link to site
+
+Link to site:
+https://btaz21.github.io/chicago-landmarks-app/
 
 
 #Issues
@@ -21,6 +24,9 @@ Link to site
 -Getting @media query to work on my phone, despite pixel size being correct
 
 -Page not refreshing to top
+
+-Having to clean up the data
+ex. landmark designation date
 
 
 #References:

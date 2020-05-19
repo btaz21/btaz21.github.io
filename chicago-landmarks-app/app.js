@@ -19,6 +19,8 @@ $(() => {
 
     //click event on about image to show more about gold building
     $('#gold-building').on('click', (event) => {
+      //clear out all the previously appended items, if any
+      $('.gold').remove()
       $('.landmarks').remove()
       $('.periods').remove()
       $('.info').remove()
@@ -75,6 +77,7 @@ $(() => {
       event.preventDefault()
       // $('.about-container').remove()
       // $('.main-content').slideDown()
+      $('.gold').remove()
       $('.landmarks').remove()
       $('.periods').remove()
       $('.info').remove()
@@ -165,14 +168,13 @@ $(() => {
             scrollTo($('.landmarks').offset())
           }
           else if (imageClicks === 'gold-building') {
-            eraGenerator(userInput)
-            const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
-            const $h3 = $('<h3>').text('Historical Landmarks Built in 1929').appendTo($div)
-            const $h4 = $('<h4>').text(data[295].landmark_name).addClass('landmark-list')
-            $('.landmarks').append($h4)
-            const $offsetValue = $('.landmarks').offset()
-            console.log($offsetValue);
-            scrollTo($offsetValue)
+            const $div = $('<div>').prependTo('.left-sidebar').addClass('gold')
+            const $h4 = $('<h4>').text(data[295].landmark_name).css('text-align', 'center').css('font-size', '1.3vw').css('color', 'gold').css('font-weight', '500').css('background-color', 'white')
+            $div.append($h4)
+            // const $offsetValue = $('.gold').offset()
+            // console.log($offsetValue);
+            // scrollTo($offsetValue)
+            $('.gold').delay('3000').fadeOut('slow')
           }
           else {
             eraGenerator(userInput)
@@ -190,7 +192,6 @@ $(() => {
             console.log($offsetValue);
             scrollTo($offsetValue)
             $('.landmark-list').on('click', (event) => {
-              // const $offsetValue = $('.landmark-list').offset()
               scrollTo($('.landmark-list').offset())
               $('.info').remove()
               $('.see-more').remove()

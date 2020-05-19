@@ -59,6 +59,12 @@ body {
   position: relative;
 }
 
+.gold {
+  transform: translateY(-410%);
+  width: 18%;
+  margin-left: 9%;
+}
+
 .hint {
   display: none;
   position: absolute;
