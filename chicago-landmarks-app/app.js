@@ -20,8 +20,48 @@ $(() => {
           $h4.text(data[i].landmark_name + ', ' + data[i].date_built).attr('id', i).addClass('landmark-list')
           $('.landmarks').append($h4)
           $('.landmarks').children().eq(1).remove()
+          additionalInfoGenerator(data)
         }
       }
+    }
+
+    const additionalInfoGenerator = (data) => {
+      $('.landmark-list').on('click', (event) => {
+        scrollTo($('.landmark-list').offset())
+        $('.info').remove()
+        $('.see-more').remove()
+        const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
+        const $firsth3 = $('<h3>').text('Description').appendTo('.info')
+        const landmarkListItem = $(event.currentTarget).attr('id')
+        const $h5 = $('<h5>').text(data[landmarkListItem].landmark_name).addClass('info-items')
+        const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
+        const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
+        const $seeMoreLink = $('<h4>').text('Wikipedia').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=')
+        const $imagesLink = $('<h4>').text('Preservation Chicago').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://preservationchicago.org/?s=')
+        let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
+        $dateDesignated = $dateDesignated.text()
+        let $reformattedDate = new Date($dateDesignated)
+        $reformattedDate = $reformattedDate.getFullYear()
+        let $dateDesignatedH4 = $('<h4>').text('Landmark Designation Date: ' + $reformattedDate).attr('id', 'last-info-item')
+        $('.info').append($h5)
+        $('.info').append($h4)
+        $('.info').append($anotherh4)
+        $('.info').append($dateDesignatedH4)
+        $('.info').append($seeMoreLink)
+        $('.info').append($imagesLink)
+        const $iFrameSearch = $seeMoreLink.attr('id')
+        $('.seemore').on('click', (event) => {
+          scrollTo($('.seemore').offset())
+          console.log($iFrameSearch);
+          console.log(event.currentTarget);
+          $('.see-more').remove()
+          const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
+          const $h3 = $('<h3>').text('Additional Information').appendTo('.see-more')
+          const $iframe = $('<iframe>').attr('id', 'iframe').attr('width', '100%').attr('height', '600').attr('src', $(event.currentTarget).attr('name') + $iFrameSearch)
+          $iframe.appendTo('.see-more')
+          $('#iframe').css('visibility', 'visible')
+        })
+      })
     }
 
 
@@ -198,8 +238,6 @@ $(() => {
           }
           else {
             eraGenerator(userInput)
-            //adding in bad data
-            // addingInTheBadData(data, userInput)
             const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
             const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
             for (let i = 0; i < data.length; i++) {
@@ -213,43 +251,7 @@ $(() => {
             const $offsetValue = $('.landmarks').offset()
             console.log($offsetValue);
             scrollTo($offsetValue)
-            //make this a function
-            $('.landmark-list').on('click', (event) => {
-              scrollTo($('.landmark-list').offset())
-              $('.info').remove()
-              $('.see-more').remove()
-              const $div = $('<div>').addClass('info').appendTo('.right-sidebar')
-              const $firsth3 = $('<h3>').text('Description').appendTo('.info')
-              const landmarkListItem = $(event.currentTarget).attr('id')
-              const $h5 = $('<h5>').text(data[landmarkListItem].landmark_name).addClass('info-items')
-              const $h4 = $('<h4>').text(data[landmarkListItem].address).addClass('info-items')
-              const $anotherh4 = $('<h4>').text('Architect: ' + data[landmarkListItem].architect).addClass('info-items')
-              const $seeMoreLink = $('<h4>').text('Wikipedia').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=')
-              const $imagesLink = $('<h4>').text('Preservation Chicago').attr('id', data[landmarkListItem].landmark_name).addClass('info-items').addClass('seemore').attr('name', 'https://preservationchicago.org/?s=')
-              let $dateDesignated = $('<h4>').text(data[landmarkListItem].landmark_designation_date)
-              $dateDesignated = $dateDesignated.text()
-              let $reformattedDate = new Date($dateDesignated)
-              $reformattedDate = $reformattedDate.getFullYear()
-              let $dateDesignatedH4 = $('<h4>').text('Landmark Designation Date: ' + $reformattedDate).attr('id', 'last-info-item')
-              $('.info').append($h5)
-              $('.info').append($h4)
-              $('.info').append($anotherh4)
-              $('.info').append($dateDesignatedH4)
-              $('.info').append($seeMoreLink)
-              $('.info').append($imagesLink)
-              const $iFrameSearch = $seeMoreLink.attr('id')
-              $('.seemore').on('click', (event) => {
-                scrollTo($('.seemore').offset())
-                console.log($iFrameSearch);
-                console.log(event.currentTarget);
-                $('.see-more').remove()
-                const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
-                const $h3 = $('<h3>').text('Additional Information').appendTo('.see-more')
-                const $iframe = $('<iframe>').attr('id', 'iframe').attr('width', '100%').attr('height', '600').attr('src', $(event.currentTarget).attr('name') + $iFrameSearch)
-                $iframe.appendTo('.see-more')
-                $('#iframe').css('visibility', 'visible')
-              })
-            })
+            additionalInfoGenerator(data)
           }
         },
         (error) => {
