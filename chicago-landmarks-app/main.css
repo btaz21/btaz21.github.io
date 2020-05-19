@@ -237,7 +237,7 @@ input {
 }
 
 .lnr {
-  padding: 1.8vw;
+  padding: 1.7vw;
   border-radius: 50%;
   text-align: center;
   /* box-shadow: 1px 1px #688daf; */
@@ -247,6 +247,7 @@ input {
   font-size: 20px;
   font-weight: 500;
   outline: 1px solid white;
+  opacity: 0.5;
 }
 
 .lnr:active {

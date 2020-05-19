@@ -5,6 +5,24 @@ $(() => {
     const currentYear = new Date().getFullYear()
     let currentImgIndex = 0
     let yearArray = []
+    let landmarksUndefined = []
+    let problematicYearsArray = []
+
+
+    //function to deal with dates like 1938-39
+    //don't forget to invoke function below if using this
+    //maybe this should be the else function way at the end? else -- for loop -- if
+    const addingInTheBadData = (data, userInput) => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].date_built !== undefined && data[i].date_built.includes(userInput)) {
+          console.log(data[i]);
+          const $h4 = $('<h4>')
+          $h4.text(data[i].landmark_name + ', ' + data[i].date_built).attr('id', i).addClass('landmark-list')
+          $('.landmarks').append($h4)
+          $('.landmarks').children().eq(1).remove()
+        }
+      }
+    }
 
 
 
@@ -107,7 +125,7 @@ $(() => {
             const $img = $('<img>').attr('src', 'images/future1.jpg').addClass('future-images').appendTo('.future-image-container')
             const $img2 = $('<img>').attr('src', 'images/future2.jpg').addClass('future-images').appendTo('.future-image-container')
             const $img3 = $('<img>').attr('src', 'images/future3.jpg').addClass('future-images').appendTo('.future-image-container')
-            const $img4 = $('<img>').attr('src', 'images/future4.jpg').addClass('future-images').appendTo('.future-image-container')
+            const $img4 = $('<img>').attr('src', 'images/future4.JPG').addClass('future-images').appendTo('.future-image-container')
             const $numOfFutureImages = $('.future-image-container').children().length - 1
             const $nextButton = $('<button>').attr('id', 'next-button').addClass('lnr lnr-chevron-right')
             const $previousButton = $('<button>').attr('id', 'previous-button').addClass('lnr lnr-chevron-left')
@@ -167,6 +185,7 @@ $(() => {
             $('.landmarks').append($h4)
             // const $offsetValue = $('.landmarks').offset()
             scrollTo($('.landmarks').offset())
+            addingInTheBadData(data, userInput)
           }
           else if (imageClicks === 'gold-building') {
             const $div = $('<div>').prependTo('.left-sidebar').addClass('gold')
@@ -179,6 +198,8 @@ $(() => {
           }
           else {
             eraGenerator(userInput)
+            //adding in bad data
+            // addingInTheBadData(data, userInput)
             const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
             const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
             for (let i = 0; i < data.length; i++) {
@@ -192,6 +213,7 @@ $(() => {
             const $offsetValue = $('.landmarks').offset()
             console.log($offsetValue);
             scrollTo($offsetValue)
+            //make this a function
             $('.landmark-list').on('click', (event) => {
               scrollTo($('.landmark-list').offset())
               $('.info').remove()
@@ -216,9 +238,7 @@ $(() => {
               $('.info').append($seeMoreLink)
               $('.info').append($imagesLink)
               const $iFrameSearch = $seeMoreLink.attr('id')
-              // console.log($iFrameSearch);
               $('.seemore').on('click', (event) => {
-                // const $offsetValue = $('.seemore').offset()
                 scrollTo($('.seemore').offset())
                 console.log($iFrameSearch);
                 console.log(event.currentTarget);
@@ -226,9 +246,7 @@ $(() => {
                 const $div = $('<div>').addClass('see-more').appendTo('.right-sidebar')
                 const $h3 = $('<h3>').text('Additional Information').appendTo('.see-more')
                 const $iframe = $('<iframe>').attr('id', 'iframe').attr('width', '100%').attr('height', '600').attr('src', $(event.currentTarget).attr('name') + $iFrameSearch)
-                // const $iframe2 = $iframe.clone().attr('src', 'https://www.google.com/search?tbm=isch&q=')
                 $iframe.appendTo('.see-more')
-                // $iframe2.appendTo('.see-more')
                 $('#iframe').css('visibility', 'visible')
               })
             })

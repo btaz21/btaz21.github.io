@@ -1,29 +1,33 @@
-## Chicago Landmarks App
+### Chicago Landmarks App
 ============================
 
 The Chicago Landmarks App allows you to search the Chicago Open Data Portal for historical landmarks by year they were built. In addition to showing a list of names, you will have the option to see other relevant info on each landmark (i.e. architect, designation date, address).
 
+Installation Instructions:
+
+
 API
 https://data.cityofchicago.org/
-
-Wireframes:
-
 
 Link to site:
 https://btaz21.github.io/chicago-landmarks-app/
 
 
-#Issues
+##Issues
 -------
--Getting iframes to connect within page.
+#Getting iframes to connect within page.
+-Some websites do not allow you to embed iframes in your own site.
 
--Finding a way to pass in a search query to these iframes so that it opens directly to the page you want and not just a search query
+-Finding a way to pass in a search query to these iframes so that it opens directly to the page you want and not just a search query. In settings > search engine > manage search engines in google chrome, they provide a list of links and their query URLs. Just by adjusting some of the
 
 -Getting pages to scroll down
 
 -Getting @media query to work on my phone, despite pixel size being correct
+Looks like some phones will zoom in when an input field is clicked and change the width field. To prevent that, I discovered a few different solutions here:
+https://www.warrenchandler.com/2019/04/02/stop-iphones-from-zooming-in-on-form-fields/
 
 -Page not refreshing to top
+**unresolved issue**
 
 -Having to clean up the data
 ex. landmark designation date
