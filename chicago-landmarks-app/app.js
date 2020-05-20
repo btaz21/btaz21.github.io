@@ -128,6 +128,7 @@ $(() => {
     //where the app begins
     $('form').on('submit', (event) => {
       event.preventDefault()
+      //clearing out what might already be on the page
       $('.modal').remove()
       $('.gold').remove()
       $('.landmarks').remove()
@@ -135,8 +136,10 @@ $(() => {
       $('.info').remove()
       $('.see-more').remove()
       $('.future').remove()
+      //grabbing value that the user inputs
       const userInput = $('input[type="text"]').val()
       $('.search-bar').css('background-color', 'rgba(255, 171, 110, 0.8)').css('border', '1px solid #DBD7D7')
+      //throwing that user value into my accessApi function so that I can compare it to the API data
       accessApi(userInput)
     })
 
@@ -167,7 +170,7 @@ $(() => {
             $nextButton.appendTo('.future-image-container')
             $previousButton.appendTo('.future-image-container')
             $returnButton.appendTo('.future')
-            // const $offsetValue = $('.future').offset()
+            // auto-scroll to the part of the page where new information exists
             scrollTo($('.future').offset())
             $('#next-button').on('click', () => {
               $('.future-image-container').children().eq(currentImgIndex).css('display', 'none')

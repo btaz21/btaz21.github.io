@@ -30,6 +30,7 @@ Javascript, HTML, CSS, Ajax, Jquery
 ## Easter Eggs
 1. Typing in a date after the current year will redirect to an image carousel proposing what the future may look like. The current year is set to a global variable that will change automatically as each year passes. This should help to preserve the functionality of the app in the future.
 2. Typing in a date before 1833 (date of earliest known Chicago building) will redirect to a modal that gives you a basic history lesson.
+3. Clicking on the b/w image will show you the name of the building in the image with the gold tower.   
 
 ## Issues
 
@@ -52,7 +53,7 @@ Looks like some phones will zoom in when an input field is clicked and change th
 Unresolved issue, seems to be an issue with my browser specifically?
 
 7. **Data is a little messy and needs some cleaning**  
-The landmark designation dates were in ISO format, so I had to manipulate that data a bit so that it would just give me the year. The one issue I'm still having trouble with is landmarks with multiple build years (i.e. 1938-39). I was able to get something started and it will populate, but it only works when there aren't other dates in the data with that start date. There are some other cases of messy data. For example, the architect listed for the Noble-Seymour-Crippen House (1833) is "addit 1863, Architects Unknown". There are a number of one off things like this that might be tricky to clean through js and better just to edit through the dataset itself.
+The landmark designation dates were in ISO format, so I had to manipulate that data a bit so that it would just give me the year. The one issue I'm still having trouble with is landmarks with multiple build years (i.e. 1938-39). I was able to get something started and it will populate, but it only works when there aren't other dates in the data with that start date. There are some other cases of messy data. For example, the architect listed for the Noble-Seymour-Crippen House (1833) is "addit 1863, Architects Unknown". There are a number of one-off things like this that might be tricky to clean through js and better just to edit through the dataset itself.
 
 
 ## References
