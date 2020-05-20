@@ -5,13 +5,9 @@ $(() => {
     const currentYear = new Date().getFullYear()
     let currentImgIndex = 0
     let yearArray = []
-    let landmarksUndefined = []
-    let problematicYearsArray = []
-
+    let landmarkArray = []
 
     //function to deal with dates like 1938-39
-    //don't forget to invoke function below if using this
-    //maybe this should be the else function way at the end? else -- for loop -- if
     const addingInTheBadData = (data, userInput) => {
       for (let i = 0; i < data.length; i++) {
         if (data[i].date_built !== undefined && data[i].date_built.includes(userInput)) {
@@ -25,6 +21,7 @@ $(() => {
       }
     }
 
+    //function to generate all info once landmark name is clicked on
     const additionalInfoGenerator = (data) => {
       $('.landmark-list').on('click', (event) => {
         scrollTo($('.landmark-list').offset())
@@ -66,7 +63,7 @@ $(() => {
 
 
 
-    //hover event on about image to show hint
+    //hover event on b/w image to show text
     $('.about-image').hover((event) => {
       $('.hint').css('display', 'block')
     }, (event) => {
@@ -74,8 +71,7 @@ $(() => {
     })
 
 
-
-    //click event on about image to show more about gold building
+    //click event on b/w image to show more about gold building
     $('#gold-building').on('click', (event) => {
       //clear out all the previously appended items, if any
       $('.gold').remove()
@@ -90,7 +86,7 @@ $(() => {
     })
 
 
-    //function that generates the div showing contemporaneous architectural styles
+    //function that generates the div showing "contemporaneous architectural styles"
     eraGenerator = (userInput) => {
       const $div = $('<div>').addClass('periods').appendTo('.left-sidebar')
       const $h3 = $('<h3>').text('Contemporaneous Architectural Styles').appendTo($div)
@@ -109,12 +105,12 @@ $(() => {
       }
       else if (userInput >= 1861 && userInput <= 1890) {
         const architectureEra = $('<h4>').addClass('styles')
-        architectureEra.text('Italianate Villa/Italianate, Octagon Style, Late Victorian, Romanesque Revival, Second Empire/Mansard Style, High Victorian Gothic, Chateauesque Style, Stick Style, Queen Anne, Shingle Style, Colonial Revival')
+        architectureEra.text('Italianate Villa/Italianate, Octagon Style, Late Victorian, Romanesque Revival, Second Empire/Mansard, High Victorian Gothic, Chateauesque Style, Stick Style, Queen Anne, Shingle Style, Colonial Revival')
         $('.periods').append(architectureEra)
       }
       else if (userInput >= 1891 && userInput <= 1920) {
         const architectureEra = $('<h4>').addClass('styles')
-        architectureEra.text('Sullivanesque, Commercial Style, Bungalow/Craftsman, Prairie School, Colonial Revival, Tudor Revival, Collegiate Gothic, Italian Renaissance Revival, Classical Revival, Beaux Arts')
+        architectureEra.text('Sullivanesque, Commercial, Bungalow/Craftsman, Prairie School, Colonial Revival, Tudor Revival, Collegiate Gothic, Italian Renaissance Revival, Classical Revival, Beaux Arts')
         $('.periods').append(architectureEra)
       }
       else if (userInput >= 1920 && userInput <= currentYear) {
@@ -135,6 +131,7 @@ $(() => {
       event.preventDefault()
       // $('.about-container').remove()
       // $('.main-content').slideDown()
+      // $('#submit').
       $('.modal').remove()
       $('.gold').remove()
       $('.landmarks').remove()
@@ -158,6 +155,7 @@ $(() => {
           for (let i = 0; i < data.length; i++) {
             yearArray.push(data[i].date_built)
           }
+          //first easter egg, any input greater than current year will redirect to image carousel of future images
           if (userInput > currentYear) {
             const $div = $('<div>').addClass('future').appendTo('body')
             const $h2 = $('<h2>').text('We haven\'t made it to ' + userInput + ' yet. But here\'s what it might look like:').appendTo('.future')
@@ -203,6 +201,7 @@ $(() => {
               })
             })
           }
+          //second easter egg, anything less than 1833 will pop open the modal
           else if (userInput < 1833) {
             const $div = $('<div>').addClass('modal')
             const $anotherDiv = $('<div>').addClass('modal-info').appendTo($div)
@@ -212,7 +211,6 @@ $(() => {
             $div.insertAfter($('.search-bar'))
             $div.css('width', '100%').css('border', '1px solid grey').css('position', 'fixed').css('height', '100%')
             $button.text('RETURN').css('border', '1px solid #575656').css('border-radius', '6%').css('background-color', '#8c8c8c').css('padding', '15px 20px')
-            // $('form').off()
             $('.close-modal, .modal').on('click', () => {
               $('.modal').remove()
             })
@@ -223,18 +221,14 @@ $(() => {
             const $h3 = $('<h3>').text('Historical Landmarks Built in ' + userInput).appendTo($div)
             const $h4 = $('<h4>').text('No landmarks available for this year')
             $('.landmarks').append($h4)
-            // const $offsetValue = $('.landmarks').offset()
             scrollTo($('.landmarks').offset())
-            addingInTheBadData(data, userInput)
+            // addingInTheBadData(data, userInput)
           }
           else if (imageClicks === 'gold-building') {
             const $div = $('<div>').prependTo('.left-sidebar').addClass('gold')
             const $h4 = $('<h4>').text(data[295].landmark_name).css('text-align', 'center').css('font-size', '1.3vw').css('color', 'gold').css('font-weight', '500').css('background-color', 'white')
             $div.append($h4)
-            // const $offsetValue = $('.gold').offset()
-            // console.log($offsetValue);
-            // scrollTo($offsetValue)
-            $('.gold').delay('3000').fadeOut('slow')
+            $('.gold').delay('1000').fadeOut('slow')
           }
           else {
             eraGenerator(userInput)
@@ -247,11 +241,7 @@ $(() => {
                 $('.landmarks').append($h4)
               }
             }
-            //scroll to event
-            const $offsetValue = $('.landmarks').offset()
-            console.log($offsetValue);
-            scrollTo($offsetValue)
-            //re-check this function
+            scrollTo($('.landmarks').offset())
             // addingInTheBadData(data, userInput)
             additionalInfoGenerator(data)
           }
