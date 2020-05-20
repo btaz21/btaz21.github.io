@@ -58,13 +58,12 @@ The landmark designation dates were in ISO format, so I had to manipulate that d
 
 All images from the site are either my own or come from the Flickr commons.
 
-[1](http://www.phmc.state.pa.us/portal/communities/architecture/styles/mid-19th-century.html)
-[2](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
-[3](https://www.w3schools.com/jsref/jsref_substr.asp)
-[4](https://www.w3schools.com/jsref/jsref_getfullyear.asp?fbclid=IwAR0v4yMWMQdQ1tdPREJu5CuJwlLbKPcXRccymrBMOzEZ12Kx1hQ9BrbxZ5I)
-[6](https://stackoverflow.com/questions/21530274/format-for-a-url-that-goes-to-google-image-search)
-[6](https://w3bits.com/rainbow-text/)
-[7](https://www.youtube.com/watch?v=N6bqSR1oLlc)
-[8](https://stackoverflow.com/questions/29884654/button-that-refreshes-the-page-on-click)
-[9](https://stackoverflow.com/questions/17344339/media-query-not-working-in-mobile-works-fine-in-chrome)
-[10](https://sabe.io/tutorials/how-to-create-modal-popup-box)
+[1](http://www.phmc.state.pa.us/portal/communities/architecture/styles/mid-19th-century.html)Info an architectural styles by era   
+[2](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)How to add iframes  
+[3](https://www.w3schools.com/jsref/jsref_substr.asp)Using the substr method in Javascript    
+[4](https://www.w3schools.com/jsref/jsref_getfullyear.asp?fbclid=IwAR0v4yMWMQdQ1tdPREJu5CuJwlLbKPcXRccymrBMOzEZ12Kx1hQ9BrbxZ5I)Getting the current date/year in Javascript   
+[6](https://w3bits.com/rainbow-text/)How to create linear gradients on text  
+[7](https://www.youtube.com/watch?v=N6bqSR1oLlc)How to create sticky nav bars  
+[8](https://stackoverflow.com/questions/29884654/button-that-refreshes-the-page-on-click)How to refresh a page using javascript
+[9](https://stackoverflow.com/questions/17344339/media-query-not-working-in-mobile-works-fine-in-chrome)Resolving media query issues  
+[10](https://sabe.io/tutorials/how-to-create-modal-popup-box)Creating pop-up modal boxes  
