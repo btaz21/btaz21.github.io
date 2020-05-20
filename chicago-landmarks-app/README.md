@@ -5,7 +5,7 @@
 ## Description
 The Chicago Landmarks App allows you to search the Chicago Open Data Portal for historical landmarks by year they were built. In addition to showing a list of names, you will have the option to see other relevant info on each landmark (i.e. architect, designation date, address) by clicking on the landmark name itself. There are a few easter eggs thrown in, so have fun!
 
-## Link to site
+## Link to App
 [Chicago Landmarks App](https://btaz21.github.io/chicago-landmarks-app/)
 
 ## Installation
@@ -14,14 +14,14 @@ Tested on: Chrome for macOS: 81.0.4044.138, Brave for macOS
 
 ## Roadmap
 Some limitations of this project include a dataset that is not particularly robust. With more data comes more functionality. Things I'd like to have:
-*links for the architects that could open wikipedia iframe*
-*images added to the dataset so that they can populate on pages*
-*random facts about the historical landmark (also needed in dataset)*
-*would like that after the b/w image is clicked on, more info is displayed about the building. Not difficult to implement, but would like to condense some of these actions into functions that could be easily slipped in*
-*You can type in a letter and the app will begin to populate, but with no data. Should make it so that the input field only accepts numbers*
+*links for the architects that could open wikipedia iframe*  
+*images added to the dataset so that they can populate on pages*  
+*random facts about the historical landmark (also needed in dataset)*  
+*would like that after the b/w image is clicked on, more info is displayed about the building. Not difficult to implement, but would like to condense some of these actions into functions that could be easily slipped in*  
+*You can type in a letter and the app will begin to populate, but with no data. Should make it so that the input field only accepts numbers*  
 
 ## API
-[Link to the Chicago Data Portal] (https://data.cityofchicago.org/)
+[Link to the Chicago Data Portal] (https://data.cityofchicago.org/)  
 [Link to specific JSON dataset] (https://data.cityofchicago.org/resource/tdab-kixi.json)
 
 ## Technologies Used
