@@ -5,21 +5,12 @@ $(() => {
     const currentYear = new Date().getFullYear()
     let currentImgIndex = 0
     let yearArray = []
-    let landmarkArray = []
 
     //function to deal with dates like 1938-39
     const addingInTheBadData = (data, userInput) => {
       for (let i = 0; i < data.length; i++) {
         if (data[i].date_built !== undefined && data[i].date_built.includes(userInput)) {
-          console.log(data[i]);
-          const $h4 = $('<h4>')
-          $h4.text(data[i].landmark_name + ', ' + data[i].date_built).attr('id', i).addClass('landmark-list')
-          $('.landmarks').append($h4)
-          $('.landmarks').children().eq(1).remove()
-          additionalInfoGenerator(data)
-        }
-        else if (data[i].date_built !== undefined && data[i].date_built.slice(5,6) === userInput.slice(2,3)) {
-          console.log(data[i]);
+          console.log(data[i].date_built);
           const $h4 = $('<h4>')
           $h4.text(data[i].landmark_name + ', ' + data[i].date_built).attr('id', i).addClass('landmark-list')
           $('.landmarks').append($h4)
@@ -137,9 +128,6 @@ $(() => {
     //where the app begins
     $('form').on('submit', (event) => {
       event.preventDefault()
-      // $('.about-container').remove()
-      // $('.main-content').slideDown()
-      // $('#submit').
       $('.modal').remove()
       $('.gold').remove()
       $('.landmarks').remove()
@@ -223,6 +211,7 @@ $(() => {
               $('.modal').remove()
             })
           }
+          //if userInput is not found in the data, do this
           else if (yearArray.includes(userInput) === false) {
             eraGenerator(userInput)
             const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
@@ -232,12 +221,14 @@ $(() => {
             scrollTo($('.landmarks').offset())
             addingInTheBadData(data, userInput)
           }
+          //if user clicks on b/w image, do this
           else if (imageClicks === 'gold-building') {
             const $div = $('<div>').prependTo('.left-sidebar').addClass('gold')
             const $h4 = $('<h4>').text(data[295].landmark_name).css('text-align', 'center').css('font-size', '1.3vw').css('color', 'gold').css('font-weight', '500').css('background-color', 'white')
             $div.append($h4)
             $('.gold').delay('1000').fadeOut('slow')
           }
+          //all other user inputs get filtered through here
           else {
             eraGenerator(userInput)
             const $div = $('<div>').addClass('landmarks').prependTo('.left-sidebar')
@@ -250,7 +241,6 @@ $(() => {
               }
             }
             scrollTo($('.landmarks').offset())
-            // addingInTheBadData(data, userInput)
             additionalInfoGenerator(data)
           }
         },
