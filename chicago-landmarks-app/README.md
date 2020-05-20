@@ -40,6 +40,7 @@ Javascript, HTML, CSS, Ajax, Jquery
 In settings > search engine > manage search engines in google chrome, they provide a list of links and their query URLs. I was able to pop in the url and just remove the "%s", then pass in the name of the landmark.
 
 3. **Getting pages to scroll down**  
+This just required a little digging, but looks like I was able to use two jquery functions called offset() and scrollTo().
 
 4. **Making sure that event listeners are turned off on new clicks**  
 On all event listeners, I made sure to empty out the necessary HTML elements using jquery
@@ -54,16 +55,16 @@ Unresolved issue, seems to be an issue with my browser specifically?
 The landmark designation dates were in ISO format, so I had to manipulate that data a bit so that it would just give me the year. The one issue I'm still having trouble with is landmarks with multiple build years (i.e. 1938-39). I was able to get something started and it will populate, but it only works when there aren't other dates in the data with that start date. There are some other cases of messy data. For example, the architect listed for the Noble-Seymour-Crippen House (1833) is "addit 1863, Architects Unknown". There are a number of one off things like this that might be tricky to clean through js and better just to edit through the dataset itself.
 
 
-#References:
+## References
 
 All images from the site are either my own or come from the Flickr commons.
 
-[1](http://www.phmc.state.pa.us/portal/communities/architecture/styles/mid-19th-century.html)Info an architectural styles by era   
-[2](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)How to add iframes  
-[3](https://www.w3schools.com/jsref/jsref_substr.asp)Using the substr method in Javascript    
-[4](https://www.w3schools.com/jsref/jsref_getfullyear.asp?fbclid=IwAR0v4yMWMQdQ1tdPREJu5CuJwlLbKPcXRccymrBMOzEZ12Kx1hQ9BrbxZ5I)Getting the current date/year in Javascript   
-[6](https://w3bits.com/rainbow-text/)How to create linear gradients on text  
-[7](https://www.youtube.com/watch?v=N6bqSR1oLlc)How to create sticky nav bars  
-[8](https://stackoverflow.com/questions/29884654/button-that-refreshes-the-page-on-click)How to refresh a page using javascript
-[9](https://stackoverflow.com/questions/17344339/media-query-not-working-in-mobile-works-fine-in-chrome)Resolving media query issues  
-[10](https://sabe.io/tutorials/how-to-create-modal-popup-box)Creating pop-up modal boxes  
+[Info an architectural styles by era](http://www.phmc.state.pa.us/portal/communities/architecture/styles/mid-19th-century.html)  
+[How to add iframes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)  
+[Using the substr method in javascript](https://www.w3schools.com/jsref/jsref_substr.asp)  
+[Getting the current date/year in Javascript](https://www.w3schools.com/jsref/jsref_getfullyear.asp?fbclid=IwAR0v4yMWMQdQ1tdPREJu5CuJwlLbKPcXRccymrBMOzEZ12Kx1hQ9BrbxZ5I)  
+[How to create color gradients on text](https://w3bits.com/rainbow-text/)   
+[How to create sticky nav bars](https://www.youtube.com/watch?v=N6bqSR1oLlc)  
+[How to refresh a page using javascript](https://stackoverflow.com/questions/29884654/button-that-refreshes-the-page-on-click)  
+[Resolving media query issues and the zoom function on input forms with iphones](https://stackoverflow.com/questions/17344339/media-query-not-working-in-mobile-works-fine-in-chrome)    
+[Creating pop-up modal boxes](https://sabe.io/tutorials/how-to-create-modal-popup-box)  

@@ -18,6 +18,14 @@ $(() => {
           $('.landmarks').children().eq(1).remove()
           additionalInfoGenerator(data)
         }
+        else if (data[i].date_built !== undefined && data[i].date_built.slice(5,6) === userInput.slice(2,3)) {
+          console.log(data[i]);
+          const $h4 = $('<h4>')
+          $h4.text(data[i].landmark_name + ', ' + data[i].date_built).attr('id', i).addClass('landmark-list')
+          $('.landmarks').append($h4)
+          $('.landmarks').children().eq(1).remove()
+          additionalInfoGenerator(data)
+        }
       }
     }
 
@@ -222,7 +230,7 @@ $(() => {
             const $h4 = $('<h4>').text('No landmarks available for this year')
             $('.landmarks').append($h4)
             scrollTo($('.landmarks').offset())
-            // addingInTheBadData(data, userInput)
+            addingInTheBadData(data, userInput)
           }
           else if (imageClicks === 'gold-building') {
             const $div = $('<div>').prependTo('.left-sidebar').addClass('gold')
